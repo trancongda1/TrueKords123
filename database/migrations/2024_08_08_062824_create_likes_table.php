@@ -6,30 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLikesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('song_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('song_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-
-            // Define foreign keys
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('song_id')->references('id')->on('songs');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('likes');

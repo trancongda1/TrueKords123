@@ -68,7 +68,7 @@ aside {
 	min-height:100%;
 }
 .cont-bot {
-	background:url(../images/cont-bot.jpg) no-repeat left top;
+	background:url(../images/icon.png) no-repeat left top;
 	width:368px;
 	height:199px;
 	position:absolute;
@@ -336,15 +336,13 @@ aside .inside {
 	background:none;
 }
 #page1 header {
-	height:449px;
-	background:url(../images/header-bg.jpg) no-repeat center top;
+	width: 120;
+	background:url(../images/ngang1.jpg) no-repeat center top;
 }
 #page1 header h1 {
 	top:128px;
 }
-#page1 header nav ul li.m4 a:hover {
-	background:url(../images/m4-act-alt.png) no-repeat left top;
-}
+
 footer {
 	background:url(../images/footer-bg.jpg) no-repeat center top;
 	color:#fff;

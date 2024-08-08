@@ -9,12 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // Method to display the user login form
-    public function showLoginForm()
-    {
-        return view('auth.register');
-    }
-
     // Method to handle user login
     public function login(Request $request)
     {
@@ -27,8 +21,8 @@ class AuthController extends Controller
             return redirect()->intended('admin/admin');
         }
 
-        // If unsuccessful, redirect back to the login page with an error message
-        return redirect('login')->with('error', 'Incorrect email or password!');
+        // If unsuccessful, redirect back to the registration page with an error message
+        return redirect('register')->with('error', 'Incorrect email or password!');
     }
 
     // Method to handle user logout
@@ -37,8 +31,8 @@ class AuthController extends Controller
         // Log the user out
         Auth::logout();
 
-        // Redirect to the login page with a message indicating successful logout
-        return redirect('login')->with('message', 'You have been logged out. Please log in.');
+        // Redirect to '/register' page with a message indicating successful logout
+        return redirect('/register')->with('error', 'You have been logged out. Please log in.');;
     }
 
     // Method to display the user registration form
@@ -63,7 +57,7 @@ class AuthController extends Controller
 
         // If validation fails, redirect back to the registration page with an error message
         if ($validator->fails()) {
-            return redirect('register')->withErrors($validator)->withInput();
+            return redirect('register')->with('error', 'Email exists or password confirmation does not match!');
         }
 
         // If validation passes, create a new user in the database
@@ -73,7 +67,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        // Redirect to the login page with a success message
-        return redirect('login')->with('success', 'Registration successful! You can now log in.');
+        // Redirect to the registration page with a success message
+        return redirect('register')->with('success', 'Registration successful!');
     }
 }

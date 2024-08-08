@@ -35,28 +35,26 @@ use App\Http\Middleware\EnsureTokenIsValid;
 */
 // get home
 Route::get('/', function () {
-    return view('index');
+    return view('songs');
 });
-Route::get('/index', function () {
-    return view('index');
-});
-Route::get('/about-us', function () {
-    return view('about-us');
+
+Route::get('/about', function () {
+    return view('about');
 });
 Route::get('/article', function () {
     return view('article');
 });
-Route::get('/articles', function () {
-    return view('articles');
+Route::get('/contribute', function () {
+    return view('contribute');
 });
 Route::get('/contact-us', function () {
     return view('contact-us');
 });
-Route::get('/sitemap', function () {
-    return view('sitemap');
+Route::get('/playlists', function () {
+    return view('playlists');
 });
-Route::get('/menu', function () {
-    return view('menu');
+Route::get('/profile', function () {
+    return view('profile');
 });
 Route::get('/test', function () {
     return view('test');
@@ -128,7 +126,7 @@ Route::post('/forgot-password', [AuthResetPasswordController::class, 'sendResetL
 
 
 
-Route::post('/songs', [MusicController::class, 'store'])->name('songs.store');
+// Route::post('/songs', [MusicController::class, 'store'])->name('songs.store');
 
 Route::resource('comments', CommentController::class)->only(['index', 'store']);
 
