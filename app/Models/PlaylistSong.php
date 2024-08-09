@@ -1,20 +1,19 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class PlaylistSong extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'song_id', 'content'];
+    protected $fillable = ['playlist_id', 'song_id'];
 
-    // Quan hệ ngược lại với User
-    public function user()
+    // Quan hệ ngược lại với Playlist
+    public function playlist()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Playlist::class);
     }
 
     // Quan hệ ngược lại với Song

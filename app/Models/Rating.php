@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Rating extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'song_id', 'content'];
+    protected $fillable = ['user_id', 'song_id', 'rating'];
 
     // Quan hệ ngược lại với User
     public function user()

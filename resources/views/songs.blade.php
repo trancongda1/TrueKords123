@@ -46,7 +46,7 @@
 <body id="page1">
 
 
-    
+
     <!-- START PAGE SOURCE -->
     <div class="wrap">
         <header>
@@ -117,6 +117,7 @@
                         <p class="p1">Chào mừng bạn đến với <strong>Music Beats</strong>, trang web cung cấp một thư viện phong phú các hợp âm chuẩn cho guitar. Trang web của chúng tôi được thiết kế để giúp bạn dễ dàng tìm kiếm và học các hợp âm khác nhau, từ những hợp âm cơ bản đến những hợp âm phức tạp hơn.</p>
                         <p class="p0">Với các hướng dẫn chi tiết và công cụ tìm kiếm hiệu quả, bạn có thể nhanh chóng tìm ra hợp âm cho bài hát yêu thích của mình và cải thiện kỹ năng chơi guitar. Dù bạn là người mới bắt đầu hay đã có kinh nghiệm, chúng tôi có các tài liệu và hỗ trợ để giúp bạn phát triển khả năng chơi đàn của mình.</p>
                     </div>
+
                     <div class="col-2">
                         <p class="section-title">Lợi Ích Của Trang Web</p>
                         <ul class="list">
@@ -126,6 +127,7 @@
                             <li><strong>Cộng Đồng Đam Mê Guitar</strong> - Tham gia cộng đồng của chúng tôi để trao đổi kinh nghiệm và học hỏi từ những người khác yêu thích guitar.</li>
                         </ul>
                     </div>
+                    
                 </div>
             </section>
             <div class="clear"></div>

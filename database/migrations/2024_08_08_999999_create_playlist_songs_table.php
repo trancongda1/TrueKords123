@@ -14,6 +14,7 @@ class CreatePlaylistSongsTable extends Migration
             $table->foreignId('song_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+        
     }
 
     public function down()

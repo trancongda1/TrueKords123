@@ -1,3 +1,6 @@
+
+
+
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -7,7 +10,15 @@
 @stop
 
 @section('content')
-
+@foreach ($songs as $song)
+        <tr>
+            <td>{{ $song->id }}</td>
+            <td>{{ $song->name }}</td>
+            <td>
+                <!-- Actions như edit, delete -->
+            </td>
+        </tr>
+        @endforeach
 @stop
 
 @section('css')
