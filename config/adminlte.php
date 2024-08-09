@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>TrueKords</b>-MUSIC',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -313,58 +313,51 @@ return [
         ],
         [
             'text'        => 'Quản lí người dùng',
-            'url'         => 'admin/top-ranking',
+            'url'         => 'admin/users',
             'icon'        => 'fas fa-trophy',
 
             'label_color' => 'success',
         ],
-
         [
-            'text' => 'Quản lí bài hát và hợp âm',
-            'url'  => 'admin/old-songs',
+            'text' => 'Quản lí bài hát',
+            'url'  => 'admin/songs',
             'icon' => 'fas fa-cloud',
         ],
         [
-            'text' => 'Quản lý danh sách phát và bình luận',
-            'url'  => 'admin/new-releases',
+            'text' => 'Quản lí hợp âm',
+            'url'  => 'admin/chords',
+            'icon' => 'fas fa-cloud',
+        ],
+        [
+            'text' => 'Quản lý danh sách phát',
+            'url'  => 'admin/playlist',
             'icon' => 'fas fa-guitar',
         ],
         [
             'text' => 'Báo cáo và thống kê',
-            'url'  => 'admin/new-releases',
+            'url'  => 'admin/statistics',
             'icon' => 'fas fa-guitar',
         ],
         [
-            'text'    => 'Báo cáo và thống kê',
+            'text'    => 'Quản lý chung',
             'icon'    => 'fas fa-music',
             'submenu' => [
                 [
-                    'text' => 'Most Searched Song',
-                    'url'  => 'admin/most-searched-song',
+                    'text' => 'Quản lý bình luận',
+                    'url'  => 'admin/comment',
                 ],
 
                 [
-                    'text' => 'Top Artists',
-                    'url'  => 'admin/top-artists',
+                    'text' => 'Quản lý yêu thích',
+                    'url'  => 'admin/like',
                 ],
-
                 [
-                    'text'    => 'Languages',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'VietNamese',
-                            'url'  => 'admin/vietnam',
-                        ],
-                        [
-                            'text'    => 'India',
-                            'url'     => 'admin/india',
-
-
-
-
-                        ],
-                    ],
+                    'text' => 'Quản lý đánh giá',
+                    'url'  => 'admin/rate',
+                ],
+                [
+                    'text' => 'Quản lý đóng góp',
+                    'url'  => 'admin/contribution',
                 ],
 
             ],

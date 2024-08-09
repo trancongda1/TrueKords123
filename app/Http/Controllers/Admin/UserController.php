@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -9,20 +10,33 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    // Hiển thị danh sách người dùng
+    /**
+     * Hiển thị danh sách người dùng.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
-    {
+    { 
         $users = User::all();
-        return view('admin.users.index', compact('users'));
+        return view('admin.user_manager', compact('users'));
     }
 
-    // Hiển thị form để tạo người dùng mới
+    /**
+     * Hiển thị form tạo người dùng mới.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
-        return view('users.create');
+        return view('admin.user_create');
     }
 
-    // Lưu người dùng mới vào database
+    /**
+     * Lưu thông tin người dùng mới vào cơ sở dữ liệu.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -43,16 +57,27 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'User created successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully!');
     }
 
-    // Hiển thị form chỉnh sửa người dùng
+    /**
+     * Hiển thị form chỉnh sửa thông tin người dùng.
+     *
+     * @param \App\Models\User $user
+     * @return \Illuminate\View\View
+     */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        return view('admin.user_edit', compact('user'));
     }
 
-    // Cập nhật thông tin người dùng trong database
+    /**
+     * Cập nhật thông tin người dùng trong cơ sở dữ liệu.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
@@ -71,13 +96,18 @@ class UserController extends Controller
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'User updated successfully!');
     }
 
-    // Xóa người dùng khỏi database
+    /**
+     * Xóa người dùng khỏi cơ sở dữ liệu.
+     *
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully!');
     }
 }

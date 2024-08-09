@@ -1,18 +1,44 @@
 <?php
-// app/Models/Song.php
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $fillable = [
-        'title', 'artist_id', 'search_count', 'is_hot', 'genre_id', 'release_year', 'audio_path' ,'language_id',
-    ];
+    use HasFactory;
 
+    protected $fillable = ['title', 'artist', 'album'];
+
+    // Quan hệ 1-n với Chord
+    public function chords()
+    {
+        return $this->hasMany(Chord::class);
+    }
+
+    // Quan hệ 1-n với Comment
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+
+    // Quan hệ 1-n với Like
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    // Quan hệ 1-n với Rating
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    // Quan hệ n-n với Playlist qua PlaylistSong
+    public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class, 'playlist_songs');
+    }
 }
+

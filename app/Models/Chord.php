@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-// Trong model Like
-class Language extends Model
+class Chord extends Model
 {
-    protected $fillable = ['name'];
+    use HasFactory;
 
-    public function songs()
-    {
-        return $this->hasMany(Song::class, 'language_id');
-    }
+    protected $fillable = ['song_id', 'name', 'content'];
 
+    // Quan hệ ngược lại với Song
     public function song()
     {
         return $this->belongsTo(Song::class);
