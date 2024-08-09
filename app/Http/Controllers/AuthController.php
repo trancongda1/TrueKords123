@@ -70,4 +70,10 @@ class AuthController extends Controller
         // Redirect to the registration page with a success message
         return redirect('register')->with('success', 'Registration successful!');
     }
+
+
+    public function register_login()
+    {
+        return view('login/index');
+    }
 }

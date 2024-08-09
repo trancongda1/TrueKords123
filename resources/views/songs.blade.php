@@ -11,7 +11,9 @@
     <script type="text/javascript" src="js/cufon-yui.js"></script>
     <script type="text/javascript" src="js/cufon-replace.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         a {
             color: white;
@@ -46,6 +48,40 @@
     <div class="wrap">
         <header>
             <div class="container">
+                <div class="header-top">
+                    <div class="logo-top">
+                        <div class="image-logo">
+                            <img src="{{asset('images/gitar.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    
+                    <div class="header-top-right">
+                        <ul>
+                            <li>
+                                <form action="#">
+                                    <div class="header-input">
+                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search">
+                                    </div>
+                                    <a href="#" class="header-icon-right header-search">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </form>
+                                
+                            </li>
+                            <li>
+                                <div class="box-user">
+                                    <a href="/register" class="header-icon-right header-user">
+                                        <i class="fa-regular fa-user"></i>
+                                    </a>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                </div>
+            
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
@@ -54,8 +90,7 @@
                         <li class="m2"><a href="/profile"><span>Hồ Sơ</span></a></li>
                         <li class="m3"><a href="/contribute"><span>Đóng Góp</span></a></li>
                         <li class="m4"><a href="/about"><span>Về Chúng Tôi</span></a></li>
-                        <a href="/register" class="fa fa-sign-in">Go to register</a><br><br>
-                        <a href="/logout" class="fa fa-sign-in">Go to logout</a>
+                        
                     </ul>
                 </nav>
             </div>

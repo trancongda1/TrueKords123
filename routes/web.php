@@ -271,3 +271,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::delete('vietnam/{id}', [LanguagesController::class, 'destroy'])->name('vietnam.destroy');
     Route::put('vietnam/{id}', [LanguagesController::class, 'update'])->name('vietnam.update');
 });
+
+
+
+Route::get('/home/login', [AuthController::class, 'register_login'])->name('loginn');
