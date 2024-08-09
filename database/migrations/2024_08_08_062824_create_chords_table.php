@@ -13,6 +13,7 @@ class CreateChordsTable extends Migration
             $table->foreignId('song_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('content');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

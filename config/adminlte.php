@@ -312,7 +312,7 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Top Rankking',
+            'text'        => 'Quản lí người dùng',
             'url'         => 'admin/top-ranking',
             'icon'        => 'fas fa-trophy',
 
@@ -320,17 +320,22 @@ return [
         ],
 
         [
-            'text' => 'OLD SONGS',
+            'text' => 'Quản lí bài hát và hợp âm',
             'url'  => 'admin/old-songs',
             'icon' => 'fas fa-cloud',
         ],
         [
-            'text' => 'New Releses',
+            'text' => 'Quản lý danh sách phát và bình luận',
             'url'  => 'admin/new-releases',
             'icon' => 'fas fa-guitar',
         ],
         [
-            'text'    => 'Genres',
+            'text' => 'Báo cáo và thống kê',
+            'url'  => 'admin/new-releases',
+            'icon' => 'fas fa-guitar',
+        ],
+        [
+            'text'    => 'Báo cáo và thống kê',
             'icon'    => 'fas fa-music',
             'submenu' => [
                 [
