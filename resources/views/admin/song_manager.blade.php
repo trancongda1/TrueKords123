@@ -1,8 +1,5 @@
 
-
-
 @extends('adminlte::page')
-
 @section('title', 'Dashboard')
 
 @section('content_header')
@@ -15,8 +12,7 @@
             <td>{{ $song->id }}</td>
             <td>{{ $song->name }}</td>
             <td>
-                <!-- Actions như edit, delete -->
-            </td>
+        </td>
         </tr>
         @endforeach
 @stop
