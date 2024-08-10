@@ -88,7 +88,16 @@
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
-                        <li class="m1"><a href="/" class="active"><span>Bài Hát</span></a></li>
+                        <li class="m1">
+                            <a href="/" class="active"><span>Bài Hát</span></a>
+                            <div class="dropdow-song">
+                                <ul>
+                                    @foreach($playlists as $playlist)
+                                        <li><a href="#">{{ $playlist->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
                         <li class="m2"><a href="/playlists"><span>Danh Sách Phát</span></a></li>
                         <li class="m2"><a href="/profile"><span>Hồ Sơ</span></a></li>
                         <li class="m3"><a href="/contribute"><span>Đóng Góp</span></a></li>
