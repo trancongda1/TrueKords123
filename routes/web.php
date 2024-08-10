@@ -4,13 +4,12 @@ use App\Http\Controllers\Admin\ChordController;
 use App\Http\Controllers\Admin\SongManagerController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\AuthResetPasswordController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\LikeController;
+use App\Http\Controllers\Admin\PlaylistController;
 use App\Http\Middleware\AdminMiddleware;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\PlaylistsController;
@@ -70,7 +69,6 @@ Route::resource('comments', CommentController::class)->only(['index', 'store']);
 Route::get('like/{songId}', [LikeController::class, 'likeSong'])->name('like.song');
 Route::post('/like/{songId}', [LikeController::class, 'likeSong'])->name('like');
 
-// Nhóm các route cho khu vực admin với middleware và prefix 'admin'
 Route::middleware([AdminMiddleware::class])
     ->prefix('admin')
     ->name('admin')
@@ -78,11 +76,10 @@ Route::middleware([AdminMiddleware::class])
         Route::resource('users', UserController::class);
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
-
-        
+        Route::resource('playlists', PlaylistController::class);
+            
         // Các route khác (có thể thêm vào đây)
         Route::view('/admin', 'admin.admin')->name('dashboard');
-        Route::view('playlist', 'admin.playlist')->name('playlist');
         Route::view('statistics', 'admin.statistics')->name('statistics');
         Route::view('comment', 'admin.comment')->name('comment');
         Route::view('like', 'admin.like')->name('like');

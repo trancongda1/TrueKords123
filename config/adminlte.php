@@ -330,7 +330,7 @@ return [
         ],
         [
             'text' => 'Quản lý danh sách phát',
-            'url'  => 'admin/playlist',
+            'url'  => 'admin/playlists',
             'icon' => 'fas fa-guitar',
         ],
         [
