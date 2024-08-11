@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chord;
-use App\Models\Song; // Đảm bảo bạn đã có model Song
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class ChordController extends Controller
@@ -36,7 +36,10 @@ class ChordController extends Controller
         $chord->song_id = $request->input('song_id'); // Cung cấp giá trị song_id nếu có
 
         if ($request->hasFile('img')) {
-            $chord->img = $request->file('img')->store('images', 'public');
+            // Lưu ảnh vào thư mục public/images
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $chord->img = 'images/' . $imageName;
         }
 
         $chord->save();
@@ -67,10 +70,13 @@ class ChordController extends Controller
 
         if ($request->hasFile('img')) {
             // Xóa hình ảnh cũ nếu có
-            if ($chord->img && file_exists(storage_path('app/public/' . $chord->img))) {
-                unlink(storage_path('app/public/' . $chord->img));
+            if ($chord->img && file_exists(public_path($chord->img))) {
+                unlink(public_path($chord->img));
             }
-            $chord->img = $request->file('img')->store('images', 'public');
+            // Lưu ảnh mới vào thư mục public/images
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $chord->img = 'images/' . $imageName;
         }
 
         $chord->save();
@@ -81,8 +87,8 @@ class ChordController extends Controller
     public function destroy($id)
     {
         $chord = Chord::findOrFail($id);
-        if ($chord->img && file_exists(storage_path('app/public/' . $chord->img))) {
-            unlink(storage_path('app/public/' . $chord->img));
+        if ($chord->img && file_exists(public_path($chord->img))) {
+            unlink(public_path($chord->img));
         }
         $chord->delete();
 

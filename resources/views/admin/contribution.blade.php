@@ -1,21 +1,163 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'User Contributions Management')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+<h1>User Contributions Management</h1>
 @stop
 
 @section('content')
-    Admin MuSic
+<div class="container">
+    <div class="row">
+        <!-- Contributions List -->
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Approved</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($contributions as $contribution)
+                    <tr>
+                        <td>{{ $contribution->id }}</td>
+                        <td>{{ $contribution->title }}</td>
+                        <td>{{ $contribution->description }}</td>
+                        <td>{{ $contribution->approved ? 'Yes' : 'No' }}</td>
+                        <td>
+                            <a href="{{ route('admin.contributions.index', ['id' => $contribution->id]) }}" class="btn btn-info">View</a>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="text-center">No contributions found.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+            <!-- Pagination links -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $contributions->links() }}
+            </div>
+        </div>
+
+        <!-- Contribution Details -->
+        @if ($selectedContribution)
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{ $selectedContribution->title }}</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Description:</strong> {{ $selectedContribution->description }}</p>
+                    <p><strong>Content:</strong></p>
+                    <div>
+                        {!! nl2br(e($selectedContribution->content)) !!}
+                    </div>
+                    <p><strong>Approved:</strong> {{ $selectedContribution->approved ? 'Yes' : 'No' }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ route('admin.contributions.index') }}" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>
+</div>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+<style>
+    /* General Container Styles */
+    .container {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Table Styles */
+    .table {
+        margin-bottom: 0;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .table thead th {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        padding: 12px;
+    }
+
+    .table tbody tr {
+        background-color: #ffffff;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .table tbody tr:hover {
+        background-color: #e9ecef;
+    }
+
+    .table tbody td {
+        vertical-align: middle;
+        text-align: center;
+        padding: 12px;
+    }
+
+    /* Button Styles */
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-info:hover {
+        background-color: #117a8b;
+        border-color: #0c5460;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Card Styles */
+    .card {
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #343a40;
+        color: white;
+        padding: 15px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-footer {
+        background-color: #f1f1f1;
+        padding: 15px;
+    }
+</style>
 @stop
 
 @section('js')
-    <script>
-        console.log('Hi!');
-    </script>
+<!-- Add any additional JavaScript if needed -->
 @stop

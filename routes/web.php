@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthResetPasswordController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\LikeController;
 use App\Http\Controllers\Admin\PlaylistController;
+use App\Http\Controllers\Admin\ContributionController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
@@ -77,11 +78,13 @@ Route::middleware([AdminMiddleware::class])
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
         Route::resource('playlist', PlaylistController::class);
+        Route::resource('contributions', ContributionController::class);
+       
+        
 
         Route::view('/', 'admin.admin')->name('dashboard');
         Route::view('statistics', 'admin.statistics')->name('statistics');
         Route::view('comment', 'admin.comment')->name('comment');
         Route::view('like', 'admin.like')->name('like');
         Route::view('rate', 'admin.rate')->name('rate');
-        Route::view('contribution', 'admin.contribution')->name('contribution');
     });

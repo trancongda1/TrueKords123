@@ -318,7 +318,6 @@
 </style>
 @stop
 
-
 @section('js')
 <!-- Add any additional JavaScript if needed -->
 @stop

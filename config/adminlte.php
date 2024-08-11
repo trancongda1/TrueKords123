@@ -353,7 +353,7 @@ return [
                 ],
                 [
                     'text' => 'Quản lý đóng góp',
-                    'url'  => 'admin/contribution',
+                    'url'  => 'admin/contributions',
                 ],
 
             ],
