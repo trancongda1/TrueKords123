@@ -10,7 +10,7 @@ class SongManagerController extends Controller
 {
     public function index()
     {
-        $songs = Song::all();
+        $songs = Song::paginate(10);
         return view('admin.song_manager', compact('songs'));
     }
     
@@ -18,7 +18,6 @@ class SongManagerController extends Controller
     // Hiển thị form tạo bài hát mới
     public function create()
     {
-        dd(1);
         return view('admin.song_manager');
     }
 

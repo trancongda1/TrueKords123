@@ -70,16 +70,14 @@ Route::post('/like/{songId}', [LikeController::class, 'likeSong'])->name('like')
 
 Route::middleware([AdminMiddleware::class])
     ->prefix('admin')
-    ->name('admin')
+    ->name('admin.')
     ->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
         Route::resource('playlists', PlaylistController::class);
-      
-        Route::resource('users', 'App\Http\Controllers\Admin\UserController');
 
-        Route::view('/admin', 'admin.admin')->name('dashboard');
+        Route::view('/', 'admin.admin')->name('dashboard');
         Route::view('statistics', 'admin.statistics')->name('statistics');
         Route::view('comment', 'admin.comment')->name('comment');
         Route::view('like', 'admin.like')->name('like');
