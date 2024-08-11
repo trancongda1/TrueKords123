@@ -61,7 +61,6 @@ Route::post('/forgot-password', [AuthResetPasswordController::class, 'sendResetL
 
 
 
-// Route::post('/songs', [MusicController::class, 'store'])->name('songs.store');
 
 Route::resource('comments', CommentController::class)->only(['index', 'store']);
 
@@ -77,8 +76,9 @@ Route::middleware([AdminMiddleware::class])
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
         Route::resource('playlists', PlaylistController::class);
-            
-        // Các route khác (có thể thêm vào đây)
+      
+        Route::resource('users', 'App\Http\Controllers\Admin\UserController');
+
         Route::view('/admin', 'admin.admin')->name('dashboard');
         Route::view('statistics', 'admin.statistics')->name('statistics');
         Route::view('comment', 'admin.comment')->name('comment');

@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $chord->id }}</td>
                     <td>{{ $chord->name }}</td>
-                    <td>{{ $chord->song->name }}</td>
+                    <td>{{ $chord->content}}</td>
                     <td>
                         @if ($chord->img)
                             <img src="{{ $chord->img }}" alt="{{ $chord->name }}" style="max-width: 100px;">
