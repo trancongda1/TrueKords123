@@ -150,37 +150,9 @@
     </header>
 
     <div class="container">
-        <aside>
-            <div class="inside">
-                <h2>Tin Tức Mới Nhất</h2>
-                <ul class="news">
-                    <li><a href="#">Ngày 30 tháng 6, 2023</a><strong>Thêm Các Tiến Trình Hợp Âm Mới</strong> Khám phá bộ sưu tập mới nhất của chúng tôi về các tiến trình hợp âm để nâng cao các bản nhạc của bạn.</li>
-                    <li><a href="#">Ngày 14 tháng 6, 2023</a><strong>Cập Nhật Bảng Xếp Hạng Bài Hát</strong> Xem bảng xếp hạng bài hát cập nhật với các bản hit và cấu trúc hợp âm của chúng.</li>
-                    <li><a href="#">Ngày 29 tháng 5, 2023</a><strong>Hướng Dẫn Mới</strong> Học các kỹ thuật mới với các hướng dẫn mới nhất của chúng tôi về chơi và sáng tác nhạc.</li>
-                </ul>
-            </div>
-        </aside>
 
         <section id="content">
-            <div class="wrapper">
-                <article class="col-1">
-                    <h2>Khám Phá Hợp Âm Guitar và Bản Nhạc</h2>
-                    <!-- Thay thế ảnh bên dưới bằng ảnh liên quan đến guitar -->
-                    <img src="images/guitar1.jpg" alt="Hợp Âm Guitar">
-                    <p class="p1">Tại Music Beats, chúng tôi cung cấp một thư viện đầy đủ các tiến trình hợp âm guitar và bản nhạc để truyền cảm hứng và hỗ trợ nhạc sĩ ở mọi cấp độ. Dù bạn là một nhạc sĩ mới hay một nhà soạn nhạc dày dạn kinh nghiệm, các tài nguyên của chúng tôi có thể giúp bạn tìm thấy những hợp âm hoàn hảo cho dự án tiếp theo của mình.</p>
-                    <p class="p0">Duyệt qua bộ sưu tập hợp âm guitar phong phú của chúng tôi, khám phá các phong cách âm nhạc khác nhau và tìm bản nhạc chi tiết để hướng dẫn bạn trong hành trình âm nhạc của mình. Nền tảng của chúng tôi được thiết kế để cung cấp cho bạn các công cụ cần thiết để nâng cao sự sáng tạo và cải thiện kỹ năng âm nhạc của bạn.</p>
-                </article>
-
-                <article class="col-2">
-                    <h2>Các Bài Viết Gần Đây</h2>
-                    <ul class="list">
-                        <li><strong>Hiểu Biết Về Tiến Trình Hợp Âm Guitar</strong> Tìm hiểu những kiến thức cơ bản về tiến trình hợp âm guitar và cách chúng hình thành âm nhạc của bạn. Khám phá lý thuyết đằng sau các tiến trình phổ biến và cách áp dụng chúng trong các tác phẩm của bạn. <a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><strong>Bản Nhạc Cho Guitar</strong> Bắt đầu với bản nhạc và hướng dẫn thân thiện với guitar của chúng tôi. Hoàn hảo cho những người mới học đọc nhạc và muốn cải thiện kỹ năng của mình. <a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><strong>Kỹ Thuật Guitar Nâng Cao</strong> Khám phá các kỹ thuật nâng cao để viết nhạc guitar hấp dẫn. Từ các thay đổi hợp âm phức tạp đến các giai điệu tinh xảo, các bài viết của chúng tôi cung cấp những cái nhìn quý giá cho những người chơi guitar dày dạn kinh nghiệm. <a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-                        <li><strong>Các Bài Hát Phổ Biến và Hợp Âm Của Chúng</strong> Khám phá các hợp âm guitar được sử dụng trong các bài hát phổ biến và cách tái tạo chúng. Phân tích cấu trúc hợp âm của các bản hit nổi tiếng và học cách tích hợp chúng vào âm nhạc của bạn. <a href="#"><i class="fa-solid fa-arrow-right"></i></a></li>
-                    </ul>
-                </article>
-            </div>
+            //contend
         </section>
 
         <div class="clear"></div>
@@ -189,7 +161,7 @@
     <footer>
         <div class="container">
             <div class="footerlink">
-                <p class="lf">Bản quyền &copy; 2023 <a href="#">Music Beats</a> - Đã Được Bảo Lưu Quyền</p>
+                <p class="lf">Bản quyền &copy; 2023 <a href="#">MAI Beats</a> - ÂM NHẠC VIỆT NAM</p>
             </div>
         </div>
     </footer>

@@ -11,6 +11,7 @@ class PlaylistController extends Controller
     public function index()
     {
         $playlists = Playlist::all();
+        dd($playlists);
         return view('admin.playlist', compact('playlists'));
     }
 
