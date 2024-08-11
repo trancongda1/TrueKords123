@@ -57,7 +57,7 @@
                             <img src="{{asset('images/gitar.jpg')}}" alt="">
                         </div>
                     </div>
-                    
+
                     <div class="header-top-right">
                         <ul>
                             <li>
@@ -69,7 +69,7 @@
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </a>
                                 </form>
-                                
+
                             </li>
                             <li>
                                 <div class="box-user">
@@ -77,35 +77,30 @@
                                         <i class="fa-regular fa-user"></i>
                                     </a>
                                 </div>
-                                
+
                             </li>
                         </ul>
-                        
-                        
+
+
                     </div>
                 </div>
-            
+
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
                         <li class="m1">
                             <a href="/" class="active"><span>Bài Hát</span></a>
-                            <div class="dropdow-song">
-                                <ul>
-                                   
-                                </ul>
-                            </div>
                         </li>
                         <li class="m2"><a href="/playlists"><span>Danh Sách Phát</span></a></li>
                         <li class="m2"><a href="/profile"><span>Hồ Sơ</span></a></li>
                         <li class="m3"><a href="/contribute"><span>Đóng Góp</span></a></li>
                         <li class="m4"><a href="/about"><span>Về Chúng Tôi</span></a></li>
-                        
+
                     </ul>
                 </nav>
             </div>
         </header>
-       
+
     </div>
     <footer>
         <div class="container">

@@ -18,7 +18,7 @@ class AuthController extends Controller
         // Check user authentication
         if (Auth::attempt($credentials)) {
             // If authentication is successful, redirect to 'admin/admin' page
-            return redirect()->intended('admin/admin');
+            return redirect()->intended('admin/');
         }
 
         // If unsuccessful, redirect back to the registration page with an error message

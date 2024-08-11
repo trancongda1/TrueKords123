@@ -12,22 +12,7 @@
 
     <!-- Thêm đoạn mã CSS để đặt background -->
     <style>
-        body {
-            background-image: url('{{ asset('images/pngtree-brown-scratched-old-vintage-background-image_581531.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            /* Giữ ảnh nền cố định khi cuộn trang */
-            min-height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
+     
         .container {
             background: rgba(0, 0, 0, 0.7);
             /* Đặt màu nền với độ trong suốt */

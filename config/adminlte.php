@@ -330,14 +330,10 @@ return [
         ],
         [
             'text' => 'Quản lý danh sách phát',
-            'url'  => 'admin/playlists',
+            'url'  => 'admin/playlist',
             'icon' => 'fas fa-guitar',
         ],
-        [
-            'text' => 'Báo cáo và thống kê',
-            'url'  => 'admin/statistics',
-            'icon' => 'fas fa-guitar',
-        ],
+
         [
             'text'    => 'Quản lý chung',
             'icon'    => 'fas fa-music',

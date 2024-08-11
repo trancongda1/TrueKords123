@@ -3,11 +3,11 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Mai Âm Nhạc</h1>
 @stop
 
 @section('content')
-    Admin MuSic
+    Chào mừng bạn đến với Trang Chủ của Mai
 @stop
 
 @section('css')

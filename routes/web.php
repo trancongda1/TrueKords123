@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\PlaylistController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
-use App\Http\Controllers\PlaylistsController;
+
 
 
 /*
@@ -34,7 +34,8 @@ Route::view('/contact-us', 'contact-us');
 Route::view('/playlists', 'playlists');
 Route::view('/profile', 'profile');
 
-
+//router dành cho user
+// 
 
 
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
@@ -75,7 +76,7 @@ Route::middleware([AdminMiddleware::class])
         Route::resource('users', UserController::class);
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
-        Route::resource('playlists', PlaylistController::class);
+        Route::resource('playlist', PlaylistController::class);
 
         Route::view('/', 'admin.admin')->name('dashboard');
         Route::view('statistics', 'admin.statistics')->name('statistics');
@@ -84,5 +85,3 @@ Route::middleware([AdminMiddleware::class])
         Route::view('rate', 'admin.rate')->name('rate');
         Route::view('contribution', 'admin.contribution')->name('contribution');
     });
-
-    Route::get('/playlists', [PlaylistsController::class, 'index']);

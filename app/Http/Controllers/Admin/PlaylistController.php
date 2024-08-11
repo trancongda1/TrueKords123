@@ -10,7 +10,7 @@ class PlaylistController extends Controller
 {
     public function index()
     {
-        $playlists = Playlist::all();
+        $playlists = Playlist::paginate(10);
         return view('admin.playlist', compact('playlists'));
     }
 
@@ -23,7 +23,7 @@ class PlaylistController extends Controller
 
         Playlist::create($request->all());
 
-        return redirect()->route('admin.playlist')->with('success', 'Playlist created successfully.');
+        return redirect()->route('admin.playlist.index')->with('success', 'Playlist created successfully.');
     }
 
     public function update(Request $request, Playlist $playlist)
@@ -35,13 +35,13 @@ class PlaylistController extends Controller
 
         $playlist->update($request->all());
 
-        return redirect()->route('admin.playlist')->with('success', 'Playlist updated successfully.');
+        return redirect()->route('admin.playlist.index')->with('success', 'Playlist updated successfully.');
     }
 
     public function destroy(Playlist $playlist)
     {
         $playlist->delete();
 
-        return redirect()->route('admin.playlist')->with('success', 'Playlist deleted successfully.');
+        return redirect()->route('admin.playlist.index')->with('success', 'Playlist deleted successfully.');
     }
 }

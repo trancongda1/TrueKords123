@@ -11,7 +11,7 @@ class ChordController extends Controller
 {
     public function index()
     {
-        $chords = Chord::paginate(10);
+        $chords = Chord::paginate(3);
         return view('admin.chords', compact('chords'));
     }
 

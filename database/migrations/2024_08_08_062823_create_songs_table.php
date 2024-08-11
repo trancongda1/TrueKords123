@@ -11,7 +11,7 @@ class CreateSongsTable extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
@@ -21,4 +21,3 @@ class CreateSongsTable extends Migration
         Schema::dropIfExists('songs');
     }
 }
-

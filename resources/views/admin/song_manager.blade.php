@@ -3,7 +3,7 @@
 @section('title', 'Songs Management')
 
 @section('content_header')
-    <h1>Songs Management</h1>
+<h1>Songs Management</h1>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
             <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Description</th>
+                <th>Artist</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $song->id }}</td>
                 <td>{{ $song->title }}</td>
-                <td>{{ $song->description }}</td>
+                <td>{{ $song->artist }}</td>
                 <td>
                     <button class="btn btn-info" data-toggle="modal" data-target="#editSongModal-{{ $song->id }}">Edit</button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#deleteSongModal-{{ $song->id }}">Delete</button>
@@ -49,8 +49,8 @@
                                     <input type="text" name="title" class="form-control" value="{{ $song->title }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" class="form-control">{{ $song->description }}</textarea>
+                                    <label for="artist">Artist</label>
+                                    <textarea name="artist" class="form-control">{{ $song->artist }}</textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -119,8 +119,8 @@
                         <input type="text" name="title" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" class="form-control"></textarea>
+                        <label for="artist">Artist</label>
+                        <textarea name="artist" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
