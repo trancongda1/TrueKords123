@@ -4,12 +4,10 @@ use App\Http\Controllers\Admin\ChordController;
 use App\Http\Controllers\Admin\SongManagerController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\AuthResetPasswordController;
-use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\LikeController;
 use App\Http\Controllers\Admin\PlaylistController;
 use App\Http\Controllers\Admin\ContributionController;
+use App\Http\Controllers\Admin\RatingController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
@@ -56,19 +54,8 @@ Route::post('/register', [AuthController::class, 'register']);
 
 
 
-Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->middleware('guest')->name('password.reset');
-
-Route::get('/forgot-password', [AuthResetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/forgot-password', [AuthResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
 
-
-
-Route::resource('comments', CommentController::class)->only(['index', 'store']);
-
-
-Route::get('like/{songId}', [LikeController::class, 'likeSong'])->name('like.song');
-Route::post('/like/{songId}', [LikeController::class, 'likeSong'])->name('like');
 
 Route::middleware([AdminMiddleware::class])
     ->prefix('admin')
@@ -79,12 +66,12 @@ Route::middleware([AdminMiddleware::class])
         Route::resource('chords', ChordController::class);
         Route::resource('playlist', PlaylistController::class);
         Route::resource('contributions', ContributionController::class);
-       
+        Route::get('like', [LikeController::class, 'index'])->name('likes.index');
+        Route::get('ratings', [RatingController::class, 'index'])->name('ratings.index');
         
 
         Route::view('/', 'admin.admin')->name('dashboard');
         Route::view('statistics', 'admin.statistics')->name('statistics');
         Route::view('comment', 'admin.comment')->name('comment');
-        Route::view('like', 'admin.like')->name('like');
         Route::view('rate', 'admin.rate')->name('rate');
     });

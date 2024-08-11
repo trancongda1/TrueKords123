@@ -17,12 +17,7 @@ class Song extends Model
         return $this->hasMany(Chord::class);
     }
 
-    // Quan hệ 1-n với Comment
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
+ 
     // Quan hệ 1-n với Like
     public function likes()
     {

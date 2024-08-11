@@ -1,15 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'User Likes Management')
+@section('title', 'User Ratings Management')
 
 @section('content_header')
-<h1>User Likes Management</h1>
+<h1>User Ratings Management</h1>
 @stop
 
 @section('content')
 <div class="container">
     <div class="row">
-        <!-- Likes List -->
+        <!-- Ratings List -->
         <div class="col-md-6">
             <table class="table">
                 <thead>
@@ -17,22 +17,24 @@
                         <th>#</th>
                         <th>User</th>
                         <th>Song</th>
+                        <th>Rating</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($likes as $like)
+                    @forelse ($ratings as $rating)
                     <tr>
-                        <td>{{ $like->id }}</td>
-                        <td>{{ $like->user->name }}</td>
-                        <td>{{ $like->song->title }}</td>
+                        <td>{{ $rating->id }}</td>
+                        <td>{{ $rating->user->name }}</td>
+                        <td>{{ $rating->song->title }}</td>
+                        <td>{{ $rating->rating }}</td>
                         <td>
-                            <a href="{{ route('admin.likes.index', ['id' => $like->id]) }}" class="btn btn-info">View</a>
+                            <a href="{{ route('admin.ratings.index', ['id' => $rating->id]) }}" class="btn btn-info">View</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="text-center">No likes found.</td>
+                        <td colspan="5" class="text-center">No ratings found.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -40,24 +42,25 @@
 
             <!-- Pagination links -->
             <div class="d-flex justify-content-center mt-4">
-                {{ $likes->links() }}
+                {{ $ratings->links() }}
             </div>
         </div>
 
-        <!-- Like Details -->
-        @if ($selectedLike)
+        <!-- Rating Details -->
+        @if ($selectedRating)
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3>Like Details</h3>
+                    <h3>Rating Details</h3>
                 </div>
                 <div class="card-body">
-                    <p><strong>User:</strong> {{ $selectedLike->user->name }}</p>
-                    <p><strong>Song:</strong> {{ $selectedLike->song->title }}</p>
-                    <p><strong>Liked At:</strong> {{ $selectedLike->created_at }}</p>
+                    <p><strong>User:</strong> {{ $selectedRating->user->name }}</p>
+                    <p><strong>Song:</strong> {{ $selectedRating->song->title }}</p>
+                    <p><strong>Rating:</strong> {{ $selectedRating->rating }}</p>
+                    <p><strong>Rated At:</strong> {{ $selectedRating->created_at }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('admin.likes.index') }}" class="btn btn-secondary">Back to List</a>
+                    <a href="{{ route('admin.ratings.index') }}" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>
         </div>

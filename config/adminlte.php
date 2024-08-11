@@ -338,10 +338,6 @@ return [
             'text'    => 'Quản lý chung',
             'icon'    => 'fas fa-music',
             'submenu' => [
-                [
-                    'text' => 'Quản lý bình luận',
-                    'url'  => 'admin/comment',
-                ],
 
                 [
                     'text' => 'Quản lý yêu thích',
@@ -349,7 +345,7 @@ return [
                 ],
                 [
                     'text' => 'Quản lý đánh giá',
-                    'url'  => 'admin/rate',
+                    'url'  => 'admin/ratings',
                 ],
                 [
                     'text' => 'Quản lý đóng góp',

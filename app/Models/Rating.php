@@ -11,15 +11,20 @@ class Rating extends Model
 
     protected $fillable = ['user_id', 'song_id', 'rating'];
 
-    // Quan hệ ngược lại với User
+    // Casting để đảm bảo 'rating' là số nguyên
+    protected $casts = [
+        'rating' => 'integer',
+    ];
+
+    // Quan hệ với User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Quan hệ ngược lại với Song
+    // Quan hệ với Song
     public function song()
     {
-        return $this->belongsTo(Song::class);
+        return $this->belongsTo(Song::class, 'song_id');
     }
 }
