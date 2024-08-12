@@ -22,6 +22,21 @@ class SongManagerController extends Controller
         return view('songs', compact('songs'));
     }
 
+     // Hiển thị danh sách bài hát cho người dùng và tìm kiếm
+     public function searchIndex(Request $request)
+     {
+         // Kiểm tra nếu có từ khóa tìm kiếm
+         $query = Song::query();
+         if ($request->has('textSearch')) {
+             $query->where('title', 'like', '%' . $request->input('textSearch') . '%');
+         }
+         
+         // Lấy tất cả bài hát hoặc theo từ khóa tìm kiếm
+         $songs = $query->paginate(10);
+         return view('songs', compact('songs'));
+     }
+ 
+
     // Hiển thị form tạo bài hát mới
     public function create()
     {

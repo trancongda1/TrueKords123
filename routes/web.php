@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\RatingController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\AuthResetPasswordController;
 
 
 
@@ -25,7 +27,6 @@ use App\Http\Middleware\EnsureTokenIsValid;
 |
 */
 // Group routes for views
-Route::view('/', 'songs');
 Route::view('/about', 'about');
 Route::view('/article', 'article');
 Route::view('/contribute', 'contribute');
@@ -34,25 +35,22 @@ Route::view('/playlists', 'playlists');
 Route::view('/profile', 'profile');
 
 //router dành cho user
-// 
+Route::get('/', [SongManagerController::class, 'searchIndex'])->name('user.songs.search');
 
 
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
 // Routes for authentication
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
-
 // Routes for registration
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-
-
-
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->middleware('guest')->name('password.reset');
+Route::get('/forgot-password', [AuthResetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [AuthResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
 
 

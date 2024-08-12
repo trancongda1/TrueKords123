@@ -26,26 +26,163 @@
             height: auto;
         }
 
-        /* CSS cho tiêu đề không dùng thẻ h2 */
-        .section-title {
-            font-size: 24px;
-            /* Kích thước chữ tùy chỉnh */
-            font-weight: bold;
-            margin: 20px 0;
+        /* General background and text color for the container */
+        .songs-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: linear-gradient(to bottom right, #d148f0, #8e2de2); /* Gradient from light to dark purple */
+            border-radius: 8px;
+            color: #fff; /* White text */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
         }
 
-        .news-title {
-            font-size: 20px;
-            /* Kích thước chữ tùy chỉnh cho tiêu đề tin tức */
+        /* Styling for the main title */
+        .search-results-title {
+            font-size: 24px;
             font-weight: bold;
             margin: 20px 0;
+            color: #fff; /* White text */
+        }
+
+        /* Styling for the subtitles "Bài Hát" and "Tác Giả" */
+        .search-results-subtitle {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            color: #fff; /* White text */
+        }
+
+        /* List items for songs */
+        .songs-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .songs-list ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #6a11cb; /* Solid darker purple for list items */
+            border-radius: 4px;
+            color: #fff; /* White text */
+            transition: background-color 0.3s ease;
+            gap: 20px; /* Space between title and artist */
+        }
+
+        .songs-list ul li:hover {
+            background-color: #8e2de2; /* Lighter purple on hover */
+        }
+
+        .songs-list ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .songs-list ul li span {
+            font-size: 16px;
+            color: #fff; /* White text */
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .songs-list ul li span.artist {
+            font-weight: bold;
+            color: #1e90ff; /* Bright blue for artist names */
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        /* CSS cho tin nhắn không tìm thấy bài hát */
+        .songs-list p {
+            font-size: 18px;
+            color: #dc3545; /* Màu đỏ để nhấn mạnh */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* CSS cho phân trang */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center items vertically */
+            gap: 10px; /* Add spacing between pagination items */
+        }
+
+        .pagination .page-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .pagination .page-item .page-link {
+            background-color: #6a11cb; /* Solid darker purple for pagination */
+            color: #fff; /* White text */
+            border: none; /* Remove border */
+            padding: 10px 15px; /* Padding for clickable area */
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #1e90ff; /* Bright blue background for active page */
+            border-color: #1e90ff; /* Match border to background */
+            color: #fff; /* White text */
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #8e2de2; /* Lighter purple on hover */
+        }
+
+        /* CSS cho form tìm kiếm */
+        .header-input {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            padding: 10px;
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            width: 80%;
+        }
+
+        .header-input::placeholder {
+            color: #bbb; /* Light grey placeholder text */
+        }
+
+        .header-icon-right.header-search {
+            background-color: #000; /* Black background for the button */
+            color: #fff; /* White text for the button */
+            border: none; /* Remove default border */
+            padding: 10px 15px;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .header-icon-right.header-search:hover {
+            background-color: #333; /* Darker black on hover */
+        }
+
+        .box-user a {
+            background-color: #000; /* Black background for the user icon */
+            color: #fff; /* White text/icon */
+            padding: 10px;
+            border-radius: 5px; /* Rounded corners */
+            text-align: center;
+            display: inline-block;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .box-user a:hover {
+            background-color: #333; /* Darker black on hover */
         }
     </style>
 </head>
 
 <body id="page1">
-
-
 
     <!-- START PAGE SOURCE -->
     <div class="wrap">
@@ -61,15 +198,14 @@
                     <div class="header-top-right">
                         <ul>
                             <li>
-                                <form action="#">
+                                <form action="{{ route('user.songs.search') }}" method="GET">
                                     <div class="header-input">
-                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search">
+                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search" value="{{ request('textSearch') }}">
                                     </div>
-                                    <a href="#" class="header-icon-right header-search">
+                                    <button type="submit" class="header-icon-right header-search">
                                         <i class="fa-solid fa-magnifying-glass"></i>
-                                    </a>
+                                    </button>
                                 </form>
-
                             </li>
                             <li>
                                 <div class="box-user">
@@ -77,11 +213,8 @@
                                         <i class="fa-regular fa-user"></i>
                                     </a>
                                 </div>
-
                             </li>
                         </ul>
-
-
                     </div>
                 </div>
 
@@ -95,13 +228,43 @@
                         <li class="m2"><a href="/profile"><span>Hồ Sơ</span></a></li>
                         <li class="m3"><a href="/contribute"><span>Đóng Góp</span></a></li>
                         <li class="m4"><a href="/about"><span>Về Chúng Tôi</span></a></li>
-
                     </ul>
                 </nav>
             </div>
         </header>
 
+        <div class="container">
+            <!-- Phần hiển thị kết quả bài hát -->
+            <div class="songs-list">
+                <!-- Thêm tiêu đề chính -->
+                <div class="search-results-title">Kết quả tìm kiếm:</div>
+                <!-- Thêm tiêu đề phụ cho "Bài Hát" và "Tác Giả" -->
+                <div class="search-results-subtitle">
+                    <span>Bài Hát</span>
+                    <span>Tác Giả</span>
+                </div>
+                
+                @if($songs->isEmpty())
+                    <p>Không tìm thấy bài hát nào.</p>
+                @else
+                    <ul>
+                        @foreach($songs as $song)
+                            <li>
+                                <span>{{ $song->title }}</span> 
+                                <span class="artist">{{ $song->artist }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                    
+                    <!-- Hiển thị các liên kết phân trang -->
+                    <div class="pagination">
+                        {{ $songs->links() }}
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
+
     <footer>
         <div class="container">
             <div class="cont-bot"></div>
@@ -110,6 +273,7 @@
             </div>
         </div>
     </footer>
+
     <script type="text/javascript">
         Cufon.now();
     </script>
