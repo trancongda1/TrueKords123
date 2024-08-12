@@ -39,6 +39,10 @@ Route::get('/', [SongManagerController::class, 'searchIndex'])->name('user.songs
 Route::get('/songs/{id}/chords', [SongManagerController::class, 'showChords'])->name('songs.chords');
 Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
 Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
+Route::get('/contributions', [ContributionController::class, 'indexUser'])->name('contributions.indexUser');
+Route::resource('/contributions', ContributionController::class)->only(['create', 'store']);
+
+
 
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout']);

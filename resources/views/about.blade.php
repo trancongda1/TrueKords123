@@ -115,31 +115,14 @@
                 <div class="wrapper">
                     <article class="col-1 about-us-section">
                         <h2>Về Chúng Tôi</h2>
-                        <img src="images/admin1.jpg" alt="Ảnh Về Chúng Tôi">
-                        <p>Chào mừng bạn đến với Music Beats, nơi cung cấp các tài nguyên âm nhạc chất lượng cao, đặc biệt là về hợp âm và phối khí nhạc. Chúng tôi cam kết mang đến cho bạn những công cụ và hướng dẫn tốt nhất để nâng cao khả năng sáng tác và sản xuất âm nhạc của bạn.</p>
-                        <p>Được thành lập vào năm 2020, Music Beats ra đời với mục tiêu giúp các nhạc sĩ và nhà sản xuất âm nhạc dễ dàng tiếp cận các hợp âm phong phú và kỹ thuật phối khí chuyên nghiệp. Chúng tôi cung cấp các bài học, mẹo, và tài liệu giúp bạn phát triển kỹ năng âm nhạc của mình một cách hiệu quả.</p>
+                        <p>Chào mừng bạn đến với Music Beats, nơi chuyên cung cấp tài nguyên âm nhạc chất lượng cao, tập trung vào hợp âm và phối khí nhạc. Chúng tôi cam kết mang đến cho bạn những công cụ và hướng dẫn tốt nhất để nâng cao khả năng sáng tác và sản xuất âm nhạc của bạn.</p>
+                        <p>Được thành lập vào năm 2020, Music Beats ra đời với mục tiêu giúp các nhạc sĩ và nhà sản xuất âm nhạc khám phá và sử dụng các hợp âm phong phú cùng kỹ thuật phối khí chuyên nghiệp. Chúng tôi cung cấp các bài học, mẹo, và tài liệu chuyên sâu về hợp âm và phối khí, giúp bạn phát triển kỹ năng âm nhạc của mình một cách hiệu quả.</p>
                         <p>Chúng tôi hy vọng bạn sẽ tìm thấy nhiều giá trị từ các tài nguyên của chúng tôi và áp dụng vào công việc sáng tạo của mình. Nếu bạn có bất kỳ câu hỏi hoặc ý kiến nào, xin đừng ngần ngại liên hệ với chúng tôi để được hỗ trợ.</p>
+
                     </article>
                     <article class="col-2">
                         <div class="about-us-section">
                             <h3>Nhóm Chúng Tôi</h3>
-                            <div class="team-member-container">
-                                <div class="team-member">
-                                    <img src="images/admin.jpg" alt="Thành Viên Nhóm 1">
-                                    <h4>John Doe</h4>
-                                    <p>Giám Đốc Điều Hành & Người Sáng Lập</p>
-                                </div>
-                                <div class="team-member">
-                                    <img src="images/admin.jpg" alt="Thành Viên Nhóm 2">
-                                    <h4>Jane Smith</h4>
-                                    <p>Chuyên Gia Hợp Âm</p>
-                                </div>
-                                <div class="team-member">
-                                    <img src="images/admin.jpg" alt="Thành Viên Nhóm 3">
-                                    <h4>Emily Johnson</h4>
-                                    <p>Nhà Phát Triển Âm Nhạc</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="about-us-section">
                             <h3>Lịch Sử Của Chúng Tôi</h3>
@@ -156,7 +139,7 @@
     <footer>
         <div class="container">
             <div class="footerlink">
-                <p class="lf">Bản quyền &copy; 2023 <a href="#">Music Beats</a> - Bảo Lưu Tất Cả Quyền</p>   
+                <p class="lf">Bản quyền &copy; 2023 <a href="#">Music Beats</a> - Bảo Lưu Tất Cả Quyền</p>
                 <div style="clear:both;"></div>
             </div>
         </div>
