@@ -25,8 +25,8 @@
                     @forelse ($ratings as $rating)
                     <tr>
                         <td>{{ $rating->id }}</td>
-                        <td>{{ $rating->user->name }}</td>
-                        <td>{{ $rating->song->title }}</td>
+                        <td>{{ $rating->user ? $rating->user->name : 'N/A' }}</td>
+                        <td>{{ $rating->song ? $rating->song->title : 'N/A' }}</td>
                         <td>{{ $rating->rating }}</td>
                         <td>
                             <a href="{{ route('admin.ratings.index', ['id' => $rating->id]) }}" class="btn btn-info">View</a>
@@ -37,6 +37,7 @@
                         <td colspan="5" class="text-center">No ratings found.</td>
                     </tr>
                     @endforelse
+
                 </tbody>
             </table>
 
@@ -54,17 +55,15 @@
                     <h3>Rating Details</h3>
                 </div>
                 <div class="card-body">
-                    <p><strong>User:</strong> {{ $selectedRating->user->name }}</p>
-                    <p><strong>Song:</strong> {{ $selectedRating->song->title }}</p>
+                    <p><strong>User:</strong> {{ $selectedRating->user ? $selectedRating->user->name : 'N/A' }}</p>
+                    <p><strong>Song:</strong> {{ $selectedRating->song ? $selectedRating->song->title : 'N/A' }}</p>
                     <p><strong>Rating:</strong> {{ $selectedRating->rating }}</p>
                     <p><strong>Rated At:</strong> {{ $selectedRating->created_at }}</p>
-                </div>
-                <div class="card-footer">
-                    <a href="{{ route('admin.ratings.index') }}" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>
         </div>
         @endif
+
     </div>
 </div>
 @stop

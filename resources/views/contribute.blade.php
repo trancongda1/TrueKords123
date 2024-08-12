@@ -114,7 +114,6 @@
                     <ul>
                         <li class="m1"><a href="/"><span>Bài Hát</span></a></li>
                         <li class="m2"><a href="/playlists"><span>Danh Sách Phát</span></a></li>
-                        <li class="m2"><a href="/profile"><span>Hồ Sơ</span></a></li>
                         <li class="m3"><a href="/contribute" class="active"><span>Đóng Góp</span></a></li>
                         <li class="m4"><a href="/about"><span>Về Chúng Tôi</span></a></li>
                     </ul>

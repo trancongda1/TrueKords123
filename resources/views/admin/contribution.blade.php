@@ -55,12 +55,11 @@
                 </div>
                 <div class="card-body">
                     <p><strong>Description:</strong> {{ $selectedContribution->description }}</p>
-                    <p><strong>Content:</strong></p>
-                    <div>
-                        {!! nl2br(e($selectedContribution->content)) !!}
-                    </div>
+                    <p><strong>Content:</strong>{{ $selectedContribution->content }}</p>
+                  
                     <p><strong>Approved:</strong> {{ $selectedContribution->approved ? 'Yes' : 'No' }}</p>
                 </div>
+
                 <div class="card-footer">
                     <a href="{{ route('admin.contributions.index') }}" class="btn btn-secondary">Back to List</a>
                 </div>

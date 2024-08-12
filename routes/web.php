@@ -34,13 +34,6 @@ Route::view('/contact-us', 'contact-us');
 Route::view('/playlists', 'playlists');
 Route::view('/profile', 'profile');
 
-//router dành cho user
-Route::get('/', [SongManagerController::class, 'searchIndex'])->name('user.songs.search');
-Route::get('/songs/{id}/chords', [SongManagerController::class, 'showChords'])->name('songs.chords');
-Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
-Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
-Route::get('/contributions', [ContributionController::class, 'indexUser'])->name('contributions.indexUser');
-Route::resource('/contributions', ContributionController::class)->only(['create', 'store']);
 
 
 
@@ -79,3 +72,12 @@ Route::middleware([AdminMiddleware::class])
         Route::view('comment', 'admin.comment')->name('comment');
         Route::view('rate', 'admin.rate')->name('rate');
     });
+
+    //router dành cho user
+Route::get('/', [SongManagerController::class, 'searchIndex'])->name('user.songs.search');
+Route::get('/songs/{id}/chords', [SongManagerController::class, 'showChords'])->name('songs.chords');
+Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
+Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
+Route::get('/contributions', [ContributionController::class, 'indexUser'])->name('contributions.indexUser');
+Route::resource('/contributions', ContributionController::class)->only(['create', 'store']);
+Route::resource('songs', SongManagerController::class, ['as' => 'user']);
