@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <style>
         a {
             color: white;
@@ -30,10 +31,13 @@
         .songs-list {
             margin-top: 20px;
             padding: 10px;
-            background: linear-gradient(to bottom right, #d148f0, #8e2de2); /* Gradient from light to dark purple */
+            background: linear-gradient(to bottom right, #d148f0, #8e2de2);
+            /* Gradient from light to dark purple */
             border-radius: 8px;
-            color: #fff; /* White text */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            color: #fff;
+            /* White text */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
         }
 
         /* Styling for the main title */
@@ -41,7 +45,8 @@
             font-size: 24px;
             font-weight: bold;
             margin: 20px 0;
-            color: #fff; /* White text */
+            color: #fff;
+            /* White text */
         }
 
         /* Styling for the subtitles "Bài Hát" and "Tác Giả" */
@@ -52,7 +57,8 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            color: #fff; /* White text */
+            color: #fff;
+            /* White text */
         }
 
         /* List items for songs */
@@ -68,15 +74,19 @@
             align-items: center;
             padding: 10px;
             margin-bottom: 10px;
-            background-color: #6a11cb; /* Solid darker purple for list items */
+            background-color: #6a11cb;
+            /* Solid darker purple for list items */
             border-radius: 4px;
-            color: #fff; /* White text */
+            color: #fff;
+            /* White text */
             transition: background-color 0.3s ease;
-            gap: 20px; /* Space between title and artist */
+            gap: 20px;
+            /* Space between title and artist */
         }
 
         .songs-list ul li:hover {
-            background-color: #8e2de2; /* Lighter purple on hover */
+            background-color: #8e2de2;
+            /* Lighter purple on hover */
         }
 
         .songs-list ul li:last-child {
@@ -85,14 +95,16 @@
 
         .songs-list ul li span {
             font-size: 16px;
-            color: #fff; /* White text */
+            color: #fff;
+            /* White text */
             flex-grow: 1;
             text-align: left;
         }
 
         .songs-list ul li span.artist {
             font-weight: bold;
-            color: #1e90ff; /* Bright blue for artist names */
+            color: #1e90ff;
+            /* Bright blue for artist names */
             white-space: nowrap;
             text-align: right;
         }
@@ -100,7 +112,8 @@
         /* CSS cho tin nhắn không tìm thấy bài hát */
         .songs-list p {
             font-size: 18px;
-            color: #dc3545; /* Màu đỏ để nhấn mạnh */
+            color: #dc3545;
+            /* Màu đỏ để nhấn mạnh */
             text-align: center;
             margin-top: 20px;
         }
@@ -110,8 +123,10 @@
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            align-items: center; /* Center items vertically */
-            gap: 10px; /* Add spacing between pagination items */
+            align-items: center;
+            /* Center items vertically */
+            gap: 10px;
+            /* Add spacing between pagination items */
         }
 
         .pagination .page-item {
@@ -120,64 +135,89 @@
         }
 
         .pagination .page-item .page-link {
-            background-color: #6a11cb; /* Solid darker purple for pagination */
-            color: #fff; /* White text */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding for clickable area */
-            border-radius: 8px; /* Rounded corners */
+            background-color: #6a11cb;
+            /* Solid darker purple for pagination */
+            color: #fff;
+            /* White text */
+            border: none;
+            /* Remove border */
+            padding: 10px 15px;
+            /* Padding for clickable area */
+            border-radius: 8px;
+            /* Rounded corners */
             transition: background-color 0.3s ease;
         }
 
         .pagination .page-item.active .page-link {
-            background-color: #1e90ff; /* Bright blue background for active page */
-            border-color: #1e90ff; /* Match border to background */
-            color: #fff; /* White text */
+            background-color: #1e90ff;
+            /* Bright blue background for active page */
+            border-color: #1e90ff;
+            /* Match border to background */
+            color: #fff;
+            /* White text */
         }
 
         .pagination .page-item .page-link:hover {
-            background-color: #8e2de2; /* Lighter purple on hover */
+            background-color: #8e2de2;
+            /* Lighter purple on hover */
         }
 
         /* CSS cho form tìm kiếm */
         .header-input {
-            background-color: #000; /* Black background */
-            color: #fff; /* White text */
+            background-color: #000;
+            /* Black background */
+            color: #fff;
+            /* White text */
             padding: 10px;
-            border: none; /* Remove default border */
-            border-radius: 5px; /* Rounded corners */
+            border: none;
+            /* Remove default border */
+            border-radius: 5px;
+            /* Rounded corners */
             width: 80%;
         }
 
         .header-input::placeholder {
-            color: #bbb; /* Light grey placeholder text */
+            color: #bbb;
+            /* Light grey placeholder text */
         }
 
         .header-icon-right.header-search {
-            background-color: #000; /* Black background for the button */
-            color: #fff; /* White text for the button */
-            border: none; /* Remove default border */
+            background-color: #000;
+            /* Black background for the button */
+            color: #fff;
+            /* White text for the button */
+            border: none;
+            /* Remove default border */
             padding: 10px 15px;
-            border-radius: 5px; /* Rounded corners */
+            border-radius: 5px;
+            /* Rounded corners */
             cursor: pointer;
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            transition: background-color 0.3s ease;
+            /* Smooth transition on hover */
         }
 
         .header-icon-right.header-search:hover {
-            background-color: #333; /* Darker black on hover */
+            background-color: #333;
+            /* Darker black on hover */
         }
 
         .box-user a {
-            background-color: #000; /* Black background for the user icon */
-            color: #fff; /* White text/icon */
+            background-color: #000;
+            /* Black background for the user icon */
+            color: #fff;
+            /* White text/icon */
             padding: 10px;
-            border-radius: 5px; /* Rounded corners */
+            border-radius: 5px;
+            /* Rounded corners */
             text-align: center;
             display: inline-block;
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            transition: background-color 0.3s ease;
+            /* Smooth transition on hover */
         }
 
         .box-user a:hover {
-            background-color: #333; /* Darker black on hover */
+            background-color: #333;
+            /* Darker black on hover */
         }
     </style>
 </head>
@@ -214,6 +254,15 @@
                                     </a>
                                 </div>
                             </li>
+                            <li>
+                                <div class="box-user">
+                                    <a href="/logout" class="header-icon-right header-user">
+                                        <i class="fa-solid fa-sign-out"></i>
+                                    </a>
+                                </div>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>
@@ -243,23 +292,23 @@
                     <span>Bài Hát</span>
                     <span>Tác Giả</span>
                 </div>
-                
+
                 @if($songs->isEmpty())
-                    <p>Không tìm thấy bài hát nào.</p>
+                <p>Không tìm thấy bài hát nào.</p>
                 @else
-                    <ul>
-                        @foreach($songs as $song)
-                            <li>
-                                <span>{{ $song->title }}</span> 
-                                <span class="artist">{{ $song->artist }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                    
-                    <!-- Hiển thị các liên kết phân trang -->
-                    <div class="pagination">
-                        {{ $songs->links() }}
-                    </div>
+                <ul>
+                    @foreach($songs as $song)
+                    <li>
+                        <span><a href="{{ route('songs.chords', $song->id) }}">{{ $song->title }}</a></span>
+                        <span class="artist">{{ $song->artist }}</span>
+                    </li>
+                    @endforeach
+                </ul>
+
+                <!-- Hiển thị các liên kết phân trang -->
+                <div class="pagination">
+                    {{ $songs->links() }}
+                </div>
                 @endif
             </div>
         </div>

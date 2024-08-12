@@ -35,7 +35,14 @@ class SongManagerController extends Controller
          $songs = $query->paginate(10);
          return view('songs', compact('songs'));
      }
- 
+     
+     // hiển thị hợp âm bài hát
+     public function showChords($id)
+     {
+         $song = Song::findOrFail($id);
+         $chords = $song->chords; // Lấy danh sách các hợp âm của bài hát
+         return view('chords', compact('song', 'chords'));
+     }
 
     // Hiển thị form tạo bài hát mới
     public function create()

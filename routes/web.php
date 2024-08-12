@@ -36,7 +36,9 @@ Route::view('/profile', 'profile');
 
 //router dành cho user
 Route::get('/', [SongManagerController::class, 'searchIndex'])->name('user.songs.search');
-
+Route::get('/songs/{id}/chords', [SongManagerController::class, 'showChords'])->name('songs.chords');
+Route::post('/ratings', [RatingController::class, 'store'])->name('ratings.store');
+Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index');
 
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout']);

@@ -5,26 +5,44 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
-    /**
-     * Hiển thị danh sách các đánh giá và chi tiết của một đánh giá cụ thể.
-     */
     public function index(Request $request)
     {
-        // Lấy danh sách các đánh giá với thông tin người dùng và bài hát
         $ratings = Rating::with(['user', 'song'])->paginate(10);
-
-        // Biến để lưu trữ thông tin chi tiết của một đánh giá nếu có
         $selectedRating = null;
 
-        // Nếu có tham số id, tìm và gán giá trị cho $selectedRating
         if ($request->has('id')) {
             $selectedRating = Rating::with(['user', 'song'])->find($request->id);
         }
 
-        // Trả về view và truyền các biến $ratings và $selectedRating
         return view('admin.ratings', compact('ratings', 'selectedRating'));
     }
+
+    public function store(Request $request)
+    {
+        if (!Auth::check()) {
+            // Lưu URL hiện tại để quay lại sau khi đăng nhập
+            $request->session()->put('url.intended', url()->previous());
+            return redirect()->route('register')->with('message', 'Vui lòng đăng nhập để đánh giá.');
+        }
+        
+        $request->validate([
+            'song_id' => 'required|exists:songs,id',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+    
+        $userId = Auth::id();
+        
+        $rating = Rating::updateOrCreate(
+            ['user_id' => $userId, 'song_id' => $request->song_id],
+            ['rating' => $request->rating]
+        );
+    
+        return redirect()->back()->with('message', 'Cảm ơn bạn đã đánh giá! Chúng tôi ghi nhận đánh giá');
+    }
+    
+    
 }
