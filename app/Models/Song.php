@@ -33,7 +33,7 @@ class Song extends Model
     // Quan hệ n-n với Playlist qua PlaylistSong
     public function playlists()
     {
-        return $this->belongsToMany(Playlist::class, 'playlist_songs');
+        return $this->belongsToMany(Playlist::class, 'playlist_songs', 'song_id', 'playlist_id');
     }
 }
 

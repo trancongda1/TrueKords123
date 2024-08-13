@@ -14,7 +14,7 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>User ID</th>
+                <th>Song IDs</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $playlist->id }}</td>
                 <td>{{ $playlist->name }}</td>
-                <td>{{ $playlist->user_id }}</td>
+                <td>{{ implode(', ', $playlist->songs->pluck('id')->toArray()) }}</td>
                 <td>
                     <button class="btn btn-info" data-toggle="modal" data-target="#editPlaylistModal-{{ $playlist->id }}">Edit</button>
                     <button class="btn btn-danger" data-toggle="modal" data-target="#deletePlaylistModal-{{ $playlist->id }}">Delete</button>
@@ -49,8 +49,18 @@
                                     <input type="text" name="name" class="form-control" value="{{ $playlist->name }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="user_id">User ID</label>
-                                    <input type="number" name="user_id" class="form-control" value="{{ $playlist->user_id }}" required>
+                                    <label for="songs">Song IDs</label>
+                                    <div class="checkbox-list">
+                                        @foreach ($songs as $song)
+                                            <div class="form-check">
+                                                <input type="checkbox" name="songs[]" value="{{ $song->id }}" class="form-check-input" id="song-{{ $song->id }}" 
+                                                {{ in_array($song->id, $playlist->songs->pluck('id')->toArray()) ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="song-{{ $song->id }}">
+                                                    {{ $song->title }} (ID: {{ $song->id }})
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -119,8 +129,17 @@
                         <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input type="number" name="user_id" class="form-control" required>
+                        <label for="songs">Song IDs</label>
+                        <div class="checkbox-list">
+                            @foreach ($songs as $song)
+                                <div class="form-check">
+                                    <input type="checkbox" name="songs[]" value="{{ $song->id }}" class="form-check-input" id="song-{{ $song->id }}">
+                                    <label class="form-check-label" for="song-{{ $song->id }}">
+                                        {{ $song->title }} (ID: {{ $song->id }})
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -176,6 +195,11 @@
         background-color: #343a40;
         color: #ffffff;
     }
+
+    .checkbox-list {
+        max-height: 200px;
+        overflow-y: auto;
+    }
 </style>
 @stop
 
@@ -184,3 +208,4 @@
     // Optional JavaScript for modal functionality or other features can be added here
 </script>
 @stop
+z

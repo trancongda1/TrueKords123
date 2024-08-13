@@ -11,6 +11,7 @@ class CreateChordsTable extends Migration
         Schema::create('chords', function (Blueprint $table) {
             $table->id();
             $table->foreignId('song_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('song_id')->nullable()->change();
             $table->string('name');
             $table->text('content');
             $table->string('img')->nullable();

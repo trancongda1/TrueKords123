@@ -12,114 +12,8 @@
     <script type="text/javascript" src="js/cufon-replace.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .title-black {
-            color: #000000;
-            /* Màu đen */
-        }
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 
-        #content .wrapper {
-            display: flex;
-            gap: 20px;
-            /* Khoảng cách giữa các phần tử */
-        }
-
-        .about-us-section {
-            flex: 1;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            /* Tạo hiệu ứng đổ bóng cho các hộp */
-        }
-
-        .col-1 {
-            margin-right: 20px;
-            /* Khoảng cách giữa hai phần tử */
-        }
-
-        .col-2 {
-            margin-left: 20px;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .about-us-section img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            /* khoảng cách giữa các phần tử */
-        }
-
-        .about-us-section {
-            flex: 1;
-            min-width: 300px;
-            /* Đảm bảo phần tử không quá nhỏ */
-        }
-
-        .team-member-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            /* khoảng cách giữa các phần tử */
-        }
-
-        .team-member {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            /* Đảm bảo phần tử không quá nhỏ */
-        }
-
-        .team-member img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-
-        #content {
-            display: flex;
-            flex-wrap: wrap;
-            /* Cho phép các phần tử vượt ra ngoài kích thước của khung chứa nếu cần */
-            gap: 20px;
-            /* Khoảng cách giữa các phần tử */
-        }
-
-        .about-us-section {
-            flex: 1;
-            min-width: 300px;
-            /* Đảm bảo phần tử không quá nhỏ */
-            box-sizing: border-box;
-            /* Bao gồm padding và border trong width */
-        }
-
-        .team-member-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            /* Khoảng cách giữa các phần tử */
-        }
-
-        .team-member {
-            flex: 1;
-            min-width: 200px;
-            /* Đảm bảo phần tử không quá nhỏ */
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body id="page1">
@@ -162,7 +56,7 @@
     <footer>
         <div class="container">
             <div class="footerlink">
-                
+            <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
                 <div style="clear:both;"></div>
             </div>
         </div>

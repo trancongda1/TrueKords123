@@ -12,90 +12,7 @@
     <script type="text/javascript" src="js/cufon-replace.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contribute-section {
-            margin-bottom: 20px;
-            max-width: 40%;
-            /* Giới hạn chiều rộng cho phần nội dung bên trái */
-        }
-
-        .contribute-section h2 {
-            margin-bottom: 15px;
-        }
-
-        .contribute-section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .contribute-section li {
-            margin-bottom: 10px;
-        }
-
-        .contact-form-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .contact-form {
-            margin-top: 20px;
-            max-width: 40%;
-            /* Giới hạn chiều rộng cho phần form */
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            background-color: #218838;
-        }
-
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-        }
-
-        .alert-success {
-            color: #3c763d;
-            background-color: #dff0d8;
-            border-color: #d6e9c6;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/dong_gop.css') }}">
 </head>
 
 <body id="page1">
@@ -165,7 +82,7 @@
         <div class="container">
             <div class="cont-bot"></div>
             <div class="footerlink">
-                <p class="lf">XIN CHÀO &copy; 2024 <a href="#">MAI ÂM NHẠC</p>
+            <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
                 <div style="clear:both;"></div>
             </div>
         </div>

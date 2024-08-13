@@ -53,7 +53,6 @@ class SongManagerController extends Controller
     // Lưu bài hát mới vào cơ sở dữ liệu
     public function store(Request $request)
     {
-        // Validate dữ liệu đầu vào
         $request->validate([
             'title' => 'required|string|max:255',
             'artist' => 'nullable|string',

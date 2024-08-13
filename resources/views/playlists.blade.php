@@ -14,33 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <style>
-        a {
-            color: white;
-            text-decoration: none;
-        }
 
-        /* CSS chỉnh sửa để làm cho hình ảnh nhỏ lại */
-        .responsive-img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* CSS cho tiêu đề không dùng thẻ h2 */
-        .section-title {
-            font-size: 24px;
-            /* Kích thước chữ tùy chỉnh */
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .news-title {
-            font-size: 20px;
-            /* Kích thước chữ tùy chỉnh cho tiêu đề tin tức */
-            font-weight: bold;
-            margin: 20px 0;
-        }
-    </style>
 </head>
 
 <body id="page1">
@@ -102,6 +76,7 @@
         <div class="container">
             <div class="cont-bot"></div>
             <div class="footerlink">
+            <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
                 <div style="clear:both;"></div>
             </div>
         </div>
@@ -109,7 +84,6 @@
     <script type="text/javascript">
         Cufon.now();
     </script>
-    <!-- END PAGE SOURCE -->
 </body>
 
 </html>

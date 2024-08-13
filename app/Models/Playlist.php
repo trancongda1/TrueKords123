@@ -17,10 +17,9 @@ class Playlist extends Model
         return $this->hasMany(PlaylistSong::class);
     }
 
-    // Quan hệ n-n với Song qua PlaylistSong
     public function songs()
     {
-        return $this->belongsToMany(Song::class, 'playlist_songs');
+        return $this->belongsToMany(Song::class, 'playlist_songs', 'playlist_id', 'song_id');
     }
 
     // Quan hệ ngược lại với User
