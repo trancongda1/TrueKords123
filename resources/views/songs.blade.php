@@ -80,11 +80,8 @@
         </header>
 
         <div class="container">
-            <!-- Phần hiển thị kết quả bài hát -->
             <div class="songs-list">
-                <!-- Thêm tiêu đề chính -->
                 <div class="search-results-title">Kết quả tìm kiếm:</div>
-                <!-- Thêm tiêu đề phụ cho "Bài Hát" và "Tác Giả" -->
                 <div class="search-results-subtitle">
                     <span>Bài Hát</span>
                     <span>Tác Giả</span>

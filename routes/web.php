@@ -81,4 +81,4 @@ Route::get('/ratings', [RatingController::class, 'index'])->name('ratings.index'
 Route::get('/contributions', [ContributionController::class, 'indexUser'])->name('contributions.indexUser');
 Route::resource('/contributions', ContributionController::class)->only(['create', 'store']);
 Route::resource('songs', SongManagerController::class, ['as' => 'user']);
-Route::get('/playlists', [PlaylistController::class, 'indexUser'])->name('playlists.indexUser');
+Route::get('/playlists', [PlaylistController::class, 'showPlaylists'])->name('playlists.show');

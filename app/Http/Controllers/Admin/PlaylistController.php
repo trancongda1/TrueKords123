@@ -11,8 +11,8 @@ class PlaylistController extends Controller
 {
     public function index()
     {
-        $playlists = Playlist::with('songs')->paginate(10); // Lấy cả thông tin về các bài hát liên quan
-        $songs = Song::all(); // Lấy tất cả các bài hát để hiển thị trong modal
+        $playlists = Playlist::with('songs')->paginate(10);
+        $songs = Song::all();
         return view('admin.playlist', compact('playlists', 'songs'));
     }
 
@@ -51,10 +51,9 @@ class PlaylistController extends Controller
         return redirect()->route('admin.playlist.index')->with('success', 'Playlist deleted successfully.');
     }
 
-    public function userIndex()
-{
-    $playlists = Playlist::with('songs')->get(); 
-    return view('playlists', compact('playlists'));
-}
-
+    public function showPlaylists()
+    {
+        $playlists = Playlist::with('songs')->get(); 
+        return view('playlists', compact('playlists')); 
+    }
 }
