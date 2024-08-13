@@ -35,7 +35,7 @@
                 <div class="header-top">
                     <div class="logo-top">
                         <div class="image-logo">
-                            <img src="{{asset('images/gitar.jpg')}}" alt="">
+                            <img src="{{ asset('images/gitar.jpg') }}" alt="">
                         </div>
                     </div>
                     <div class="playlist-container">
@@ -45,9 +45,6 @@
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
 
-                        @if($message)
-                        <p>{{ $message }}</p>
-                        @else
                         @foreach($playlists as $playlist)
                         <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
                         <ul class="song-list">
@@ -56,9 +53,7 @@
                             @endforeach
                         </ul>
                         @endforeach
-                        @endif
                     </div>
-
                 </div>
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
