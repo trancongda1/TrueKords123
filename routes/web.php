@@ -82,3 +82,5 @@ Route::get('/contributions', [ContributionController::class, 'indexUser'])->name
 Route::resource('/contributions', ContributionController::class)->only(['create', 'store']);
 Route::resource('songs', SongManagerController::class, ['as' => 'user']);
 Route::get('/playlists', [PlaylistController::class, 'showPlaylists'])->name('playlists.show');
+Route::get('/playlists/search', [PlaylistController::class, 'searchPlaylists'])->name('playlists.search');
+

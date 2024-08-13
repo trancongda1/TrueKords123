@@ -53,7 +53,21 @@ class PlaylistController extends Controller
 
     public function showPlaylists()
     {
-        $playlists = Playlist::with('songs')->get(); 
-        return view('playlists', compact('playlists')); 
+        $playlists = Playlist::with('songs')->get();
+        return view('playlists', compact('playlists'));
+    }
+
+    public function searchPlaylists(Request $request)
+    {
+        $search = $request->input('search');
+        $playlists = Playlist::where('name', 'like', '%' . $search . '%')->with('songs')->get();
+
+        if ($playlists->isEmpty()) {
+            $message = "Không có playlist nào phù hợp với từ khóa.";
+        } else {
+            $message = null;
+        }
+
+        return view('playlists', compact('playlists', 'message'));
     }
 }

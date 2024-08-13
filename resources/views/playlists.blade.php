@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Music Beats</title>
     <meta charset="utf-8">
@@ -16,13 +17,17 @@
     <link rel="stylesheet" href="{{ asset('css/playlist.css') }}">
     <style>
         .song-list {
-            display: none; /* Hide all song lists initially */
+            display: none;
+            /* Hide all song lists initially */
         }
+
         .song-list.active {
-            display: block; /* Show the song list when active */
+            display: block;
+            /* Show the song list when active */
         }
     </style>
 </head>
+
 <body id="page1">
     <div class="wrap">
         <header>
@@ -33,27 +38,27 @@
                             <img src="{{asset('images/gitar.jpg')}}" alt="">
                         </div>
                     </div>
-                    <div class="header-top-right">
-                        <ul>
-                            <li>
-                                <form action="#">
-                                    <div class="header-input">
-                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search">
-                                    </div>
-                                    <a href="#" class="header-icon-right header-search">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </a>
-                                </form>
-                            </li>
-                            <li>
-                                <div class="box-user">
-                                    <a href="/register" class="header-icon-right header-user">
-                                        <i class="fa-regular fa-user"></i>
-                                    </a>
-                                </div>
-                            </li>
+                    <div class="playlist-container">
+                        <!-- Search Form -->
+                        <form action="{{ route('playlists.search') }}" method="GET" class="playlist-search-form">
+                            <input type="text" name="search" placeholder="Tìm kiếm Playlist..." value="{{ request('search') }}">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+
+                        @if($message)
+                        <p>{{ $message }}</p>
+                        @else
+                        @foreach($playlists as $playlist)
+                        <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
+                        <ul class="song-list">
+                            @foreach($playlist->songs as $song)
+                            <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
+                            @endforeach
                         </ul>
+                        @endforeach
+                        @endif
                     </div>
+
                 </div>
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
@@ -92,10 +97,11 @@
             // This toggles the 'active' class which controls visibility
             songList.classList.toggle('active');
         }
-        
+
         function redirectToChords(songId) {
             window.location.href = `/songs/${songId}/chords`;
         }
     </script>
 </body>
+
 </html>
