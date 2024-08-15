@@ -46,7 +46,7 @@
                         </form>
 
                         @foreach($playlists as $playlist)
-                        <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
+             
                         <ul class="song-list">
                             @foreach($playlist->songs as $song)
                             <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
@@ -89,7 +89,6 @@
     <script>
         function toggleSongs(element) {
             var songList = element.nextElementSibling;
-            // This toggles the 'active' class which controls visibility
             songList.classList.toggle('active');
         }
 
