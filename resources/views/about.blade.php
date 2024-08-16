@@ -21,6 +21,13 @@
     <div class="wrap">
         <header>
             <div class="container">
+                <div class="header-top">
+                    <div class="logo-top">
+                        <div class="image-logo">
+                            <img src="{{ asset('images/gitar.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
@@ -57,7 +64,7 @@
     <footer>
         <div class="container">
             <div class="footerlink">
-            <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
+                <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
                 <div style="clear:both;"></div>
             </div>
         </div>

@@ -26,7 +26,14 @@
 
         <header>
             <div class="container">
-                <h1><a href="#">Music Beats</a></h1>
+                <div class="header-top">
+                    <div class="logo-top">
+                        <div class="image-logo">
+                            <img src="{{ asset('images/gitar.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <h1><a href="#">Music Beats</a></h1>           
                 <nav>
                     <ul>
                         <li class="m1"><a href="/"><span>Bài Hát</span></a></li>
@@ -37,6 +44,7 @@
                 </nav>
             </div>
         </header>
+
         <div class="container">
             <section id="content" class="box-content">
                 <div class="contact-form-container">
@@ -78,6 +86,7 @@
             <div class="clear"></div>
         </div>
     </div>
+
     <footer>
         <div class="container">
             <div class="cont-bot"></div>

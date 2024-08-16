@@ -1,199 +1,135 @@
-a {
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #000;
+    padding: 10px 0;
+    color: white;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-top-right ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header-top-right ul li {
+    display: inline-block;
+}
+
+.header-input input {
+    background-color: #333;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.header-icon-right {
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
-}
-
-
-
-/* General background and text color for the container */
-.songs-list {
-    margin-top: 20px;
-    padding: 10px;
-    background: linear-gradient(to bottom right, #d148f0, #8e2de2);
-    /* Gradient from light to dark purple */
-    border-radius: 8px;
-    color: #fff;
-    /* White text */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Shadow for depth */
-}
-
-/* Styling for the main title */
-.search-results-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 20px 0;
-    color: #fff;
-    /* White text */
-}
-
-/* Styling for the subtitles "Bài Hát" and "Tác Giả" */
-.search-results-subtitle {
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    color: #fff;
-    /* White text */
-}
-
-/* List items for songs */
-.songs-list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.songs-list ul li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #6a11cb;
-    /* Solid darker purple for list items */
-    border-radius: 4px;
-    color: #fff;
-    /* White text */
-    transition: background-color 0.3s ease;
-    gap: 20px;
-    /* Space between title and artist */
-}
-
-.songs-list ul li:hover {
-    background-color: #8e2de2;
-    /* Lighter purple on hover */
-}
-
-.songs-list ul li:last-child {
-    margin-bottom: 0;
-}
-
-.songs-list ul li span {
     font-size: 16px;
-    color: #fff;
-    /* White text */
-    flex-grow: 1;
-    text-align: left;
 }
 
-.songs-list ul li span.artist {
-    font-weight: bold;
-    color: #1e90ff;
-    /* Bright blue for artist names */
-    white-space: nowrap;
-    text-align: right;
+nav ul li a.active {
+    border-bottom: 2px solid purple;
 }
 
-/* CSS cho tin nhắn không tìm thấy bài hát */
-.songs-list p {
-    font-size: 18px;
-    color: #dc3545;
-    /* Màu đỏ để nhấn mạnh */
+footer {
+    background-color: #000;
+    color: white;
+    padding: 10px 0;
     text-align: center;
-    margin-top: 20px;
 }
 
-/* CSS cho phân trang */
+footer a {
+    color: purple;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    .header-top {
+        flex-direction: column;
+    }
+}
 .pagination {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Center items vertically */
-    gap: 10px;
-    /* Add spacing between pagination items */
+    margin-top: 20px;
 }
 
 .pagination .page-item {
-    display: flex;
-    align-items: center;
+    margin: 0 5px;
 }
 
-.pagination .page-item .page-link {
-    background-color: #6a11cb;
-    /* Solid darker purple for pagination */
+.pagination .page-link {
+    color: #ff9;
+    background-color: #444;
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.pagination .page-link:hover {
+    background-color: #555;
     color: #fff;
-    /* White text */
-    border: none;
-    /* Remove border */
-    padding: 10px 15px;
-    /* Padding for clickable area */
-    border-radius: 8px;
-    /* Rounded corners */
-    transition: background-color 0.3s ease;
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #1e90ff;
-    /* Bright blue background for active page */
-    border-color: #1e90ff;
-    /* Match border to background */
-    color: #fff;
-    /* White text */
+    background-color: #ff9;
+    color: #333;
+    border-color: #ff9;
 }
 
-.pagination .page-item .page-link:hover {
-    background-color: #8e2de2;
-    /* Lighter purple on hover */
-}
-
-/* CSS cho form tìm kiếm */
-.header-input {
-    background-color: #000;
-    /* Black background */
-    color: #fff;
-    /* White text */
-    padding: 10px;
-    border: none;
-    /* Remove default border */
-    border-radius: 5px;
-    /* Rounded corners */
-    width: 80%;
-}
-
-.header-input::placeholder {
-    color: #bbb;
-    /* Light grey placeholder text */
-}
-
-.header-icon-right.header-search {
-    background-color: #000;
-    /* Black background for the button */
-    color: #fff;
-    /* White text for the button */
-    border: none;
-    /* Remove default border */
-    padding: 10px 15px;
-    border-radius: 5px;
-    /* Rounded corners */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    /* Smooth transition on hover */
-}
-
-.header-icon-right.header-search:hover {
+.pagination .page-item.disabled .page-link {
+    color: #999;
+    pointer-events: none;
     background-color: #333;
-    /* Darker black on hover */
-}
-
-.box-user a {
-    background-color: #000;
-    /* Black background for the user icon */
-    color: #fff;
-    /* White text/icon */
-    padding: 10px;
-    border-radius: 5px;
-    /* Rounded corners */
-    text-align: center;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-    /* Smooth transition on hover */
-}
-
-.box-user a:hover {
-    background-color: #333;
-    /* Darker black on hover */
+    border-color: #333;
 }

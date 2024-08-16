@@ -222,3 +222,17 @@ footer a {
         flex-direction: column;
     }
 }
+.playlist-title {
+    font-family: 'Lobster', cursive; /* Use a more decorative font */
+    font-size: 2.5rem; /* Increase font size */
+    color: #333; /* Adjust text color */
+    text-align: center; /* Center align the text */
+    margin-bottom: 20px; /* Add some space below the title */
+    transition: color 0.3s ease, transform 0.3s ease; /* Add smooth transition effects */
+    cursor: pointer; /* Change cursor to indicate clickability */
+}
+
+.playlist-title:hover {
+    color: #ff1493; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the text on hover */
+}

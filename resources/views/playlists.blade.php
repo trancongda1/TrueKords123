@@ -67,13 +67,14 @@
         </header>
         <div class="playlist-container play-section">
                 <div class="title-playlists">
-                    <h2>Nhạc hay</h2>
+                    <h2>Danh sách nhạc</h2>
                 </div>
             <div class="box-playlists">
                 <div class="play-lists">
                     @foreach($playlists as $playlist)
                         
-                        <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
+                    <h3 class="playlist-title" onclick="toggleSongs(this)">{{ $playlist->name }}</h3>
+
                         <ul class="song-list">
                             @foreach($playlist->songs as $song)
                             <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
