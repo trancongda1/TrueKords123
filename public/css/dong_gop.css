@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
 body, html {
     margin: 0;
@@ -102,6 +102,8 @@ nav ul li a.active {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    z-index: 10; /* Ensure button is on top */
+    position: relative; /* Ensure the button is not behind other elements */
 }
 
 .contact-form button:hover {
@@ -119,6 +121,19 @@ footer {
 footer a {
     color: purple;
 }
+.contact-form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer; /* Makes the label clickable */
+}
+
+.contact-form input[type="checkbox"] {
+    margin-top: 10px; /* Adds some space around the checkbox */
+    cursor: pointer; /* Ensures the checkbox shows the pointer cursor */
+    position: relative; /* Ensures the checkbox is correctly positioned */
+    z-index: 10; /* Makes sure it's on top of other elements */
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -131,3 +146,35 @@ footer a {
         flex-direction: column;
     }
 }
+/* Success Message Styling */
+.alert-success {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 15px; /* Padding inside the box */
+    margin-bottom: 20px; /* Space below the success message */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    font-size: 16px; /* Increase font size for readability */
+    text-align: center; /* Center-align the text */
+    position: relative; /* Allow for close button positioning */
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Optional: Adding a Close Button */
+.alert-success .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+

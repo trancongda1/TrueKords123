@@ -18,10 +18,11 @@
 <body id="page1">
     <!-- BẮT ĐẦU NGUỒN TRANG -->
     <div class="wrap">
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+                <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+            </div>
         @endif
 
         <header>
@@ -33,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-                <h1><a href="#">Music Beats</a></h1>           
+                <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
                         <li class="m1"><a href="/"><span>Bài Hát</span></a></li>
@@ -79,6 +80,7 @@
                         <label for="approval">Bạn có muốn nội dung của bạn được phê duyệt?</label>
                         <input type="checkbox" id="approval" name="approval">
 
+
                         <button type="submit">Gửi Đóng Góp</button>
                     </form>
                 </div>
@@ -91,7 +93,7 @@
         <div class="container">
             <div class="cont-bot"></div>
             <div class="footerlink">
-            <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
+                <p class="lf">XIN CHÀO &copy; 2024 <a href="https://www.facebook.com/MaiDuckAnh">MAI ÂM NHẠC</a></p>
                 <div style="clear:both;"></div>
             </div>
         </div>
