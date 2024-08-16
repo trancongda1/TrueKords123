@@ -46,7 +46,6 @@
                         </form>
 
                         @foreach($playlists as $playlist)
-             
                         <ul class="song-list">
                             @foreach($playlist->songs as $song)
                             <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
@@ -66,15 +65,27 @@
                 </nav>
             </div>
         </header>
-        <div class="playlist-container">
-            @foreach($playlists as $playlist)
-            <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
-            <ul class="song-list">
-                @foreach($playlist->songs as $song)
-                <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
-                @endforeach
-            </ul>
-            @endforeach
+        <div class="playlist-container play-section">
+                <div class="title-playlists">
+                    <h2>Nhạc hay</h2>
+                </div>
+            <div class="box-playlists">
+                <div class="play-lists">
+                    @foreach($playlists as $playlist)
+                        
+                        <h2 onclick="toggleSongs(this)">{{ $playlist->name }}</h2>
+                        <ul class="song-list">
+                            @foreach($playlist->songs as $song)
+                            <li onclick="redirectToChords({{ $song->id }})">{{ $song->title }}</li>
+                            @endforeach
+                        </ul>
+                    @endforeach
+                </div>
+                <div class="playlis-image">
+                    <img src="{{asset('../images/music-playlists.png')}}" alt="">
+                </div>
+            </div>
+            
         </div>
     </div>
     <footer>

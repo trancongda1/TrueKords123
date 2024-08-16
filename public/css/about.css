@@ -1,26 +1,33 @@
 .title-black {
     color: #000000;
-    /* Màu đen */
+    /* MÃ u Ä‘en */
+}
+section#content
+{
+    width: 100%;
 }
 
 #content .wrapper {
     display: flex;
     gap: 20px;
-    /* Khoảng cách giữa các phần tử */
+    /* Khoáº£ng cÃ¡ch giá»¯a cÃ¡c pháº§n tá»­ */
+} 
+section#content
+{
+    width: 100%;
 }
-
 .about-us-section {
     flex: 1;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    /* Tạo hiệu ứng đổ bóng cho các hộp */
+    /* Táº¡o hiá»‡u á»©ng Ä‘á»• bÃ³ng cho cÃ¡c há»™p */
 }
 
 .col-1 {
     margin-right: 20px;
-    /* Khoảng cách giữa hai phần tử */
+    /* Khoáº£ng cÃ¡ch giá»¯a hai pháº§n tá»­ */
 }
 
 .col-2 {
@@ -42,20 +49,20 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* khoảng cách giữa các phần tử */
+    /* khoáº£ng cÃ¡ch giá»¯a cÃ¡c pháº§n tá»­ */
 }
 
 .about-us-section {
     flex: 1;
     min-width: 300px;
-    /* Đảm bảo phần tử không quá nhỏ */
+    /* Äáº£m báº£o pháº§n tá»­ khÃ´ng quÃ¡ nhá» */
 }
 
 .team-member-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* khoảng cách giữa các phần tử */
+    /* khoáº£ng cÃ¡ch giá»¯a cÃ¡c pháº§n tá»­ */
 }
 
 .team-member {
@@ -65,7 +72,7 @@ a {
     text-align: center;
     flex: 1;
     min-width: 200px;
-    /* Đảm bảo phần tử không quá nhỏ */
+    /* Äáº£m báº£o pháº§n tá»­ khÃ´ng quÃ¡ nhá» */
 }
 
 .team-member img {
@@ -78,29 +85,29 @@ a {
 #content {
     display: flex;
     flex-wrap: wrap;
-    /* Cho phép các phần tử vượt ra ngoài kích thước của khung chứa nếu cần */
+    /* Cho phÃ©p cÃ¡c pháº§n tá»­ vÆ°á»£t ra ngoÃ i kÃ­ch thÆ°á»›c cá»§a khung chá»©a náº¿u cáº§n */
     gap: 20px;
-    /* Khoảng cách giữa các phần tử */
+    /* Khoáº£ng cÃ¡ch giá»¯a cÃ¡c pháº§n tá»­ */
 }
 
 .about-us-section {
     flex: 1;
     min-width: 300px;
-    /* Đảm bảo phần tử không quá nhỏ */
+    /* Äáº£m báº£o pháº§n tá»­ khÃ´ng quÃ¡ nhá» */
     box-sizing: border-box;
-    /* Bao gồm padding và border trong width */
+    /* Bao gá»“m padding vÃ  border trong width */
 }
 
 .team-member-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* Khoảng cách giữa các phần tử */
+    /* Khoáº£ng cÃ¡ch giá»¯a cÃ¡c pháº§n tá»­ */
 }
 
 .team-member {
     flex: 1;
     min-width: 200px;
-    /* Đảm bảo phần tử không quá nhỏ */
+    /* Äáº£m báº£o pháº§n tá»­ khÃ´ng quÃ¡ nhá» */
     text-align: center;
 }

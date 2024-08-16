@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
     background-color: #111;
     color: white;
+}
+
+#page1 header
+{
+    background: none;
 }
 
 /* Header Styles */
@@ -13,12 +20,22 @@ header {
     color: white;
 }
 
+header .container
+{
+    height: auto;
+    display: block;
+    padding-bottom: 30px;
+}
 .container {
     width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+header nav
+{
+    position: initial;
 }
 
 .logo-top img {
@@ -29,7 +46,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 .header-input input {
@@ -68,25 +84,119 @@ nav ul li a.active {
 }
 
 /* Main Content Styles */
-.playlist-container {
-    padding: 20px;
-    background-color: #222;
-}
 
 .song-list {
     list-style: none;
     padding: 0;
 }
 
+h1 a
+{
+    background: none;
+    display: none;
+}
 .song-list li {
     padding: 10px;
     border-bottom: 1px solid #444;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: #333;
 }
 
 .song-list li:hover {
     background-color: #333;
+    color: #ffff;
+}
+
+.playlist-container
+{
+    
+    background: #ffff;
+    
+    
+}
+.play-section
+{
+    padding: 3rem 0 1rem;
+    width: 100%;
+    height: 100%;
+
+}
+.title-playlists h2
+{
+    color: #333;
+    text-align: center;
+    text-transform: capitalize;
+    height: 60px;
+    line-height: 60px;
+    font-family: "Lobster", sans-serif;
+    font-size: 3rem;
+    transition: all .3s;
+}
+
+.box-playlists
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    position: relative;
+}
+
+.song-list 
+{
+    transition: all .3s ease;
+}
+
+.play-lists
+{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    /* height: 100%; */
+    /* top: 20%; */
+}
+
+.play-lists h2
+{
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+}
+
+.playlis-image
+{
+    width: 500px;
+}
+
+.playlist-search-form
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.playlist-search-form input
+{
+    outline: none;
+    border: none;
+    padding: 10px;
+}
+.playlist-search-form button
+{
+    border: none;
+    background: none;
+    color: #ffff;
+    padding: 6px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(236, 76, 236);
+}
+
+.cont-bot
+{
+    display: none;
 }
 
 /* Footer Styles */
