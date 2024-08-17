@@ -8,128 +8,230 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Login Page</title>
     <style>
-        body {
-            background-image: url('/images/ngang1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            font-family: 'Roboto', Arial, sans-serif;
-        }
+        /* General Styles */
+body {
+    background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #ffffff;
+}
 
-        .container {
-            margin-top: 100px;
-        }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        .card {
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.8);
-            overflow: hidden;
-            max-width: 700px;
-            margin: auto;
-        }
+.container {
+    margin-top: 80px;
+}
 
-        .card-header {
-            background-color: #5bc0de;
-            color: white;
-            text-align: center;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            padding: 1rem;
-        }
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    max-width: 800px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+}
 
-        .card-header h2 {
-            font-family: 'Roboto', Arial, sans-serif;
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .card-body {
-            padding: 2rem;
-        }
+/* Card Header */
+.card-header {
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6);
+    animation: pulse 2s infinite;
+}
 
-        .card-footer {
-            background-color: #f7f7f7;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            padding: 1rem;
-        }
+@keyframes pulse {
+    0% { box-shadow: 0 0 15px rgba(255, 105, 180, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(255, 105, 180, 1); }
+    100% { box-shadow: 0 0 15px rgba(255, 105, 180, 0.4); }
+}
 
-        .alert-success {
-            color: #155724;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 15px;
-            padding: 0.75rem 1.25rem;
-            margin-bottom: 1rem;
-        }
+.card-header h2 {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 2.5rem;
+    animation: textGlow 2s infinite alternate;
+}
 
-        .alert-danger {
-            color: #721c24;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            border-radius: 15px;
-            padding: 0.75rem 1.25rem;
-            margin-bottom: 1rem;
-        }
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(63, 94, 251, 0.7); }
+    to { text-shadow: 0 0 30px rgba(63, 94, 251, 1); }
+}
 
-        .nav-tabs .nav-link {
-            color: #5bc0de;
-            font-weight: bold;
-        }
+/* Card Body */
+.card-body {
+    padding: 2.5rem;
+}
 
-        .nav-tabs .nav-link.active {
-            color: #fff;
-            background-color: #5bc0de;
-            border-color: #5bc0de;
-        }
+/* Form Controls */
+.form-control {
+    border-radius: 20px;
+    padding: 1rem;
+    border: 2px solid #ced4da;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
 
-        .btn-primary,
-        .btn-success,
-        .btn-danger {
-            border-radius: 15px;
-            padding: 0.75rem;
-            font-size: 1rem;
-        }
+.form-control:focus {
+    border-color: #fc466b;
+    box-shadow: 0 0 15px rgba(252, 70, 107, 0.8);
+    transform: scale(1.1);
+}
 
-        .btn-block {
-            width: 100%;
-        }
+/* Button Styles */
+.btn {
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .form-control {
-            border-radius: 15px;
-            padding: 0.75rem;
-            border: 1px solid #ced4da;
-        }
+.btn-primary {
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+    border: none;
+    color: white;
+}
 
-        .form-group label {
-            font-weight: bold;
-        }
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3f5efb, #fc466b);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(63, 94, 251, 0.8);
+}
 
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #5bc0de;
-        }
+.btn-success {
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    border: none;
+    color: white;
+}
 
-        /* New CSS for the back button */
-        .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-        }
+.btn-success:hover {
+    background: linear-gradient(135deg, #92fe9d, #00c9ff);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(146, 254, 157, 0.8);
+}
 
-        .back-button a {
-            color: #fff;
-            background-color: #5bc0de;
-            padding: 0.5rem 1rem;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.btn-danger {
+    background: linear-gradient(135deg, #ff0844, #ffb199);
+    border: none;
+    color: white;
+}
 
-        .back-button a:hover {
-            background-color: #4a9fc3;
-        }
+.btn-danger:hover {
+    background: linear-gradient(135deg, #ffb199, #ff0844);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 133, 103, 0.8);
+}
+
+/* Back Button */
+.back-button a {
+    color: #fff;
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-button a:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #3f5efb, #fc466b);
+    box-shadow: 0 10px 20px rgba(63, 94, 251, 0.8);
+}
+
+/* Alerts */
+.alert-success, .alert-danger {
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInAlert 1.5s ease-in-out;
+}
+
+.alert-success {
+    color: #155724;
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 255, 157, 0.8);
+}
+
+.alert-danger {
+    color: #721c24;
+    background: linear-gradient(135deg, #ff0844, #ffb199);
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 133, 103, 0.8);
+}
+
+@keyframes fadeInAlert {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nav Tabs */
+.nav-tabs .nav-link {
+    color: #3f5efb;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #fc466b, #3f5efb);
+    border-color: #3f5efb;
+    box-shadow: 0 4px 10px rgba(63, 94, 251, 0.8);
+}
+
+.nav-tabs .nav-link:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #3f5efb, #fc466b);
+    box-shadow: 0 6px 20px rgba(63, 94, 251, 0.8);
+}
+
+/* Card Footer */
+.card-footer {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    animation: footerPulse 2s infinite alternate;
+}
+
+@keyframes footerPulse {
+    0% { background-color: rgba(255, 255, 255, 0.1); }
+    50% { background-color: rgba(255, 255, 255, 0.15); }
+    100% { background-color: rgba(255, 255, 255, 0.1); }
+}
+
+.card-footer a {
+    color: #3f5efb;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.card-footer a:hover {
+    color: #fc466b;
+    transform: scale(1.1);
+}
+
     </style>
 </head>
 
