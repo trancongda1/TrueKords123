@@ -1,59 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&display=swap');
 
+/* Global Styles */
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #111;
     color: white;
+    overflow-x: hidden;
 }
 
-#page1 header
-{
-    background: none;
+.container {
+    width: 90%;
+    margin: 0 auto;
 }
 
 /* Header Styles */
 header {
-    background-color: #000;
-    padding: 10px 0;
+    background: linear-gradient(135deg, #000, #333);
+    padding: 20px 0;
     color: white;
-}
-
-header .container
-{
-    height: auto;
-    display: block;
-    padding-bottom: 30px;
-}
-.container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header nav
-{
-    position: initial;
-}
-
-.logo-top img {
-    height: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 10;
 }
 
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-top img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo-top img:hover {
+    transform: scale(1.1);
+}
+
+.header-top-right ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header-top-right ul li {
+    display: inline-block;
 }
 
 .header-input input {
     background-color: #333;
-    border: none;
-    padding: 8px 10px;
+    border: 2px solid #ff1493;
+    padding: 10px;
     border-radius: 5px;
     color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-input input:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
 }
 
 .header-icon-right {
@@ -63,6 +75,13 @@ header nav
     cursor: pointer;
     padding: 8px;
     margin-left: 5px;
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header-icon-right:hover {
+    color: #ff1493;
+    transform: scale(1.2);
 }
 
 /* Navigation Styles */
@@ -71,168 +90,196 @@ nav ul {
     padding-left: 0;
     display: flex;
     gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
+}
+
+nav ul li a:hover {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.7);
 }
 
 nav ul li a.active {
-    border-bottom: 2px solid purple;
+    background: #ff1493;
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.9);
 }
 
-/* Main Content Styles */
+/* Playlist Styles */
+.playlist-container {
+    background: #222;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.title-playlists h2 {
+    color: #ff69b4;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 3.5rem;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+    margin-bottom: 30px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 105, 180, 0.7);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 20, 147, 1), 0 0 30px rgba(255, 105, 180, 1);
+    }
+}
+
+.box-playlists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.playlist-title {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    color: #ff1493;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.playlist-title:hover {
+    color: #ff69b4;
+    transform: scale(1.1);
+}
 
 .song-list {
     list-style: none;
     padding: 0;
+    border: 2px solid #ff1493;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
-h1 a
-{
-    background: none;
-    display: none;
+.song-list.active {
+    display: block;
 }
+
 .song-list li {
-    padding: 10px;
+    padding: 15px;
     border-bottom: 1px solid #444;
     cursor: pointer;
-    transition: background-color 0.3s;
-    color: #333;
+    background: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .song-list li:hover {
-    background-color: #333;
-    color: #ffff;
+    background-color: #444;
+    transform: translateX(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.playlist-container
-{
-    
-    background: #ffff;
-    
-    
+/* Image Effects */
+.playlis-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
+    opacity: 0.8;
+    filter: grayscale(20%) sepia(20%);
 }
-.play-section
-{
-    padding: 3rem 0 1rem;
+
+.playlis-image img:hover {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    filter: brightness(1.3) contrast(1.5) saturate(1.5) hue-rotate(10deg);
+    opacity: 1;
+}
+
+/* Starry Effect */
+.playlis-image:before, .playlis-image:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-
-}
-.title-playlists h2
-{
-    color: #333;
-    text-align: center;
-    text-transform: capitalize;
-    height: 60px;
-    line-height: 60px;
-    font-family: "Lobster", sans-serif;
-    font-size: 3rem;
-    transition: all .3s;
+    pointer-events: none;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
-.box-playlists
-{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    justify-content: space-around;
-    gap: 1rem;
-    position: relative;
+.playlis-image:hover:before, .playlis-image:hover:after {
+    opacity: 1;
+    animation: sparkle 1.5s infinite;
 }
 
-.song-list 
-{
-    transition: all .3s ease;
-}
-
-.play-lists
-{
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    /* height: 100%; */
-    /* top: 20%; */
-}
-
-.play-lists h2
-{
-    color: #333;
-    cursor: pointer;
-    text-align: center;
-}
-
-.playlis-image
-{
-    width: 500px;
-}
-
-.playlist-search-form
-{
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-.playlist-search-form input
-{
-    outline: none;
-    border: none;
-    padding: 10px;
-}
-.playlist-search-form button
-{
-    border: none;
-    background: none;
-    color: #ffff;
-    padding: 6px 10px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: rgb(236, 76, 236);
-}
-
-.cont-bot
-{
-    display: none;
+@keyframes sparkle {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-2px) translateX(2px);
+    }
 }
 
 /* Footer Styles */
 footer {
     background-color: #000;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
 }
 
 footer a {
-    color: purple;
+    color: #ff69b4;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* Responsive and Adjustment */
+footer a:hover {
+    color: #ff1493;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         align-items: center;
     }
 
-    nav ul {
+    .header-top {
         flex-direction: column;
     }
-}
-.playlist-title {
-    font-family: 'Lobster', cursive; /* Use a more decorative font */
-    font-size: 2.5rem; /* Increase font size */
-    color: #333; /* Adjust text color */
-    text-align: center; /* Center align the text */
-    margin-bottom: 20px; /* Add some space below the title */
-    transition: color 0.3s ease, transform 0.3s ease; /* Add smooth transition effects */
-    cursor: pointer; /* Change cursor to indicate clickability */
-}
 
-.playlist-title:hover {
-    color: #ff1493; /* Change color on hover */
-    transform: scale(1.1); /* Slightly enlarge the text on hover */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .box-playlists {
+        grid-template-columns: 1fr;
+    }
+
+    .playlis-image img {
+        max-width: 100%;
+    }
 }

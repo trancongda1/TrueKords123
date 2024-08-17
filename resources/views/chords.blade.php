@@ -13,76 +13,11 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="{{ asset('css/chords.css') }}">
-    
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const chordElements = document.querySelectorAll(".chords-list p");
-
-            // Apply red color to chords within square brackets
-            chordElements.forEach(function (paragraph) {
-                paragraph.innerHTML = paragraph.innerHTML.replace(/\[(.*?)\]/g, '<span class="chord">[$1]</span>');
-            });
-
-            // Font size functionality
-            const fontSizeInput = document.getElementById('font-size');
-            const chordsList = document.querySelector('.scroll-container');
-
-            fontSizeInput.addEventListener('input', function () {
-                const newSize = fontSizeInput.value + 'px';
-                chordsList.style.fontSize = newSize;
-            });
-
-            // Modal functionality
-            var modal = document.getElementById("myModal");
-            var btn = document.getElementById("viewSheetMusic");
-            var span = document.getElementsByClassName("close")[0];
-
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Auto-scroll functionality
-            let scrollInterval;
-            const scrollContainer = document.querySelector('.scroll-container');
-            const speedSelect = document.getElementById('scroll-speed');
-
-            function startAutoScroll(scrollSpeed) {
-                clearInterval(scrollInterval); // Clear previous interval if any
-                scrollInterval = setInterval(function () {
-                    if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
-                        scrollContainer.scrollTop = 0; // Reset to top when reaching the bottom
-                    } else {
-                        scrollContainer.scrollTop += 1; // Scroll step
-                    }
-                }, scrollSpeed);
-            }
-
-            speedSelect.addEventListener('change', function () {
-                let speed = parseInt(speedSelect.value, 10);
-                startAutoScroll(speed);
-            });
-
-            // Initialize with default speed (Normal)
-            startAutoScroll(parseInt(speedSelect.value, 10));
-        });
-    </script>
 </head>
 
 <body id="page1">
@@ -91,11 +26,13 @@
             <h1>{{ $song->title }}</h1>
             <p>Tác giả: {{ $song->artist }}</p>
         </header>
+
         @if (session('message'))
-        <script>
-            alert("{{ session('message') }}");
-        </script>
+        <div class="success-message" id="successMessage">
+            Đánh giá thành công
+        </div>
         @endif
+
         <form action="{{ route('ratings.store') }}" method="POST">
             @csrf
             <input type="hidden" name="song_id" value="{{ $song->id }}">
@@ -168,6 +105,74 @@
             @endif
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Hide success message after 3 seconds
+            setTimeout(function() {
+                var successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+            }, 3000);
+
+            // Apply red color to chords within square brackets
+            const chordElements = document.querySelectorAll(".chords-list p");
+            chordElements.forEach(function(paragraph) {
+                paragraph.innerHTML = paragraph.innerHTML.replace(/\[(.*?)\]/g, '<span class="chord">[$1]</span>');
+            });
+
+            // Font size functionality
+            const fontSizeInput = document.getElementById('font-size');
+            const chordsList = document.querySelector('.scroll-container');
+            fontSizeInput.addEventListener('input', function() {
+                const newSize = fontSizeInput.value + 'px';
+                chordsList.style.fontSize = newSize;
+            });
+
+            // Modal functionality
+            var modal = document.getElementById("myModal");
+            var btn = document.getElementById("viewSheetMusic");
+            var span = document.getElementsByClassName("close")[0];
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Auto-scroll functionality
+            let scrollInterval;
+            const scrollContainer = document.querySelector('.scroll-container');
+            const speedSelect = document.getElementById('scroll-speed');
+            function startAutoScroll(scrollSpeed) {
+                clearInterval(scrollInterval); // Clear previous interval if any
+                scrollInterval = setInterval(function() {
+                    if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
+                        scrollContainer.scrollTop = 0; // Reset to top when reaching the bottom
+                    } else {
+                        scrollContainer.scrollTop += 1; // Scroll step
+                    }
+                }, scrollSpeed);
+            }
+            speedSelect.addEventListener('change', function() {
+                let speed = parseInt(speedSelect.value, 10);
+                startAutoScroll(speed);
+            });
+            startAutoScroll(parseInt(speedSelect.value, 10));
+
+            // Toggle columns functionality
+            const toggleButton = document.getElementById("toggle-columns");
+            toggleButton.addEventListener("click", function() {
+                chordsList.classList.toggle("multi-column");
+            });
+        });
+    </script>
 </body>
 
 </html>

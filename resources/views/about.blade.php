@@ -13,7 +13,70 @@
     <script type="text/javascript" src="js/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <style>
+        /* Custom Styles for Content */
+        .content-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            background-color: #1b1b1b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
+        .content-section img {
+            max-width: 50%;
+            /* Image size adjusted here */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-text {
+            max-width: 600px;
+            margin: 20px;
+        }
+
+        .content-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Lobster', cursive;
+        }
+
+        .content-text p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .content-text {
+                margin: 10px 0;
+            }
+
+            .content-text h2 {
+                font-size: 2em;
+            }
+
+            .content-text p {
+                font-size: 1em;
+            }
+
+            .content-section img {
+                max-width: 80%;
+                /* Adjusts the image size on smaller screens */
+            }
+        }
+    </style>
 </head>
 
 <body id="page1">
@@ -27,6 +90,34 @@
                             <img src="{{ asset('images/gitar.jpg') }}" alt="">
                         </div>
                     </div>
+                    <div class="header-top-right">
+                        <ul>
+                            <li>
+                                <form action="{{ route('user.songs.search') }}" method="GET">
+                                    <div class="header-input">
+                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search" value="{{ request('textSearch') }}">
+                                    </div>
+                                    <button type="submit" class="header-icon-right header-search">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <div class="box-user">
+                                    <a href="/register" class="header-icon-right header-user">
+                                        <i class="fa-regular fa-user"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="box-user">
+                                    <a href="/logout" class="header-icon-right header-user">
+                                        <i class="fa-solid fa-sign-out"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
@@ -39,28 +130,19 @@
                 </nav>
             </div>
         </header>
+
         <div class="container">
-            <section id="content">
-                <div class="wrapper">
-                    <article class="col-1 about-us-section">
-                        <h2 class="title-black">Về Chúng Tôi</h2>
-                        <p>Chào mừng bạn đến với Music Beats, nơi chuyên cung cấp tài nguyên âm nhạc chất lượng cao, tập trung vào hợp âm và phối khí nhạc. Chúng tôi cam kết mang đến cho bạn những công cụ và hướng dẫn tốt nhất để nâng cao khả năng sáng tác và sản xuất âm nhạc của bạn.</p>
-                        <p>Được thành lập vào năm 2020, Music Beats ra đời với mục tiêu giúp các nhạc sĩ và nhà sản xuất âm nhạc khám phá và sử dụng các hợp âm phong phú cùng kỹ thuật phối khí chuyên nghiệp. Chúng tôi cung cấp các bài học, mẹo, và tài liệu chuyên sâu về hợp âm và phối khí, giúp bạn phát triển kỹ năng âm nhạc của mình một cách hiệu quả.</p>
-                        <p>Chúng tôi hy vọng bạn sẽ tìm thấy nhiều giá trị từ các tài nguyên của chúng tôi và áp dụng vào công việc sáng tạo của mình. Nếu bạn có bất kỳ câu hỏi hoặc ý kiến nào, xin đừng ngần ngại liên hệ với chúng tôi để được hỗ trợ.</p>
-                    </article>
-                    <article class="col-2 about-us-section">
-                        <h3>Lịch Sử Của Chúng Tôi</h3>
-                        <p>Music Beats được thành lập với mục tiêu kết nối những người yêu âm nhạc và cung cấp các nguồn tài nguyên chuyên sâu về hợp âm và phối khí. Từ những ngày đầu, chúng tôi đã nỗ lực không ngừng để mang đến cho người dùng những tài liệu chất lượng và hỗ trợ tốt nhất.</p>
-                        <p>Hành trình của chúng tôi đã chứng kiến nhiều bước tiến quan trọng và chúng tôi liên tục mở rộng và cải thiện dịch vụ của mình để đáp ứng nhu cầu của cộng đồng âm nhạc. Chúng tôi rất vui mừng khi thấy sự phát triển và thành công của người dùng thông qua các công cụ và tài nguyên của chúng tôi.</p>
-                    </article>
+            <section class="content-section">
+                <div class="content-text">
+                    <h2>Welcome to True Kords</h2>
+                    <p>Mai Đức Anh, hiện là sinh viên của Trường Đại học Giao thông Vận tải, là người sáng lập trang web này. Đây là đồ án tốt nghiệp của tôi, một dự án tâm huyết hướng đến việc xây dựng một nền tảng chuyên về chia sẻ nhạc và hợp âm. Mục tiêu của tôi là tạo ra một không gian âm nhạc phong phú, nơi mọi người có thể khám phá, học hỏi, và cống hiến cho cộng đồng yêu nhạc.</p>
+
                 </div>
+                <img src="{{ asset('../images/music-playlists.png') }}" alt="Music Playlists">
             </section>
-
-
-            <div class="clear"></div>
         </div>
     </div>
-    
+
     <footer>
         <div class="container">
             <div class="footerlink">
