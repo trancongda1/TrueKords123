@@ -11,15 +11,17 @@ class RatingController extends Controller
 {
     public function index(Request $request)
     {
-        $ratings = Rating::with(['user', 'song'])->paginate(10);
+        // Fetch all ratings with related songs and users
+        $ratings = Rating::with(['song', 'user'])->paginate(10);
+    
         $selectedRating = null;
-
         if ($request->has('id')) {
-            $selectedRating = Rating::with(['user', 'song'])->find($request->id);
+            $selectedRating = Rating::with(['song', 'user'])->find($request->id);
         }
-
+    
         return view('admin.ratings', compact('ratings', 'selectedRating'));
     }
+    
 
     public function store(Request $request)
     {

@@ -8,6 +8,17 @@
 
 @section('content')
 <div class="container">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="row">
         <!-- Contributions List -->
         <div class="col-md-6">
@@ -17,19 +28,36 @@
                         <th>#</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>YouTube Link</th>
                         <th>Approved</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($contributions as $contribution)
-                    <tr>
+                    <tr class="{{ $contribution->approved ? 'approved' : 'not-approved' }}">
                         <td>{{ $contribution->id }}</td>
                         <td>{{ $contribution->title }}</td>
                         <td>{{ $contribution->description }}</td>
-                        <td>{{ $contribution->approved ? 'Yes' : 'No' }}</td>
                         <td>
-                            <a href="{{ route('admin.contributions.index', ['id' => $contribution->id]) }}" class="btn btn-info">View</a>
+                            <a href="{{ $contribution->youtube_link }}" target="_blank">{{ $contribution->youtube_link }}</a> <!-- Link YouTube -->
+                        </td>
+                        <td>
+                            {{ $contribution->approved ? 'Yes ✅' : 'No ❌' }}
+                        </td>
+
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ route('admin.contributions.index', ['id' => $contribution->id]) }}" class="btn btn-info">View</a>
+                                <form action="{{ route('admin.contributions.approve', $contribution->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">Approve</button>
+                                </form>
+                                <form action="{{ route('admin.contributions.reject', $contribution->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @empty
@@ -38,6 +66,7 @@
                     </tr>
                     @endforelse
                 </tbody>
+
             </table>
 
             <!-- Pagination links -->
@@ -55,8 +84,7 @@
                 </div>
                 <div class="card-body">
                     <p><strong>Description:</strong> {{ $selectedContribution->description }}</p>
-                    <p><strong>Content:</strong>{{ $selectedContribution->content }}</p>
-                  
+                    <p><strong>Content:</strong> {{ $selectedContribution->content }}</p>
                     <p><strong>Approved:</strong> {{ $selectedContribution->approved ? 'Yes' : 'No' }}</p>
                 </div>
 
@@ -72,19 +100,33 @@
 
 @section('css')
 <style>
-    /* General Container Styles */
-    .container {
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* CSS for approved and not-approved rows */
+    .approved {
+        background-color: #d4edda;
+        /* Light green background for approved contributions */
+        color: #155724;
+        /* Dark green text color */
     }
 
-    /* Table Styles */
-    .table {
-        margin-bottom: 0;
-        border-collapse: separate;
-        border-spacing: 0 10px;
+    .not-approved {
+        background-color: #f8d7da;
+        /* Light red background for not approved contributions */
+        color: #721c24;
+        /* Dark red text color */
+    }
+
+    /* Hover effect to enhance visibility */
+    .approved:hover,
+    .not-approved:hover {
+        opacity: 0.8;
+    }
+
+    /* Other styles remain unchanged */
+    .table tbody td {
+        vertical-align: middle;
+        text-align: center;
+        padding: 12px;
+        white-space: nowrap;
     }
 
     .table thead th {
@@ -95,23 +137,6 @@
         padding: 12px;
     }
 
-    .table tbody tr {
-        background-color: #ffffff;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .table tbody tr:hover {
-        background-color: #e9ecef;
-    }
-
-    .table tbody td {
-        vertical-align: middle;
-        text-align: center;
-        padding: 12px;
-    }
-
-    /* Button Styles */
     .btn-info {
         background-color: #17a2b8;
         border-color: #17a2b8;
@@ -121,6 +146,28 @@
     .btn-info:hover {
         background-color: #117a8b;
         border-color: #0c5460;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
     }
 
     .btn-secondary {
@@ -134,25 +181,43 @@
         border-color: #545b62;
     }
 
-    /* Card Styles */
+    .table tbody td .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Card Styles - Smaller View */
     .card {
         margin-top: 20px;
+        width: 70%;
+        max-width: 300px;
+        box-sizing: border-box;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .card-header {
         background-color: #343a40;
         color: white;
-        padding: 15px;
+        padding: 8px;
+        font-size: 1rem;
     }
 
     .card-body {
-        padding: 20px;
+        padding: 10px;
+        font-size: 0.9rem;
     }
 
     .card-footer {
         background-color: #f1f1f1;
-        padding: 15px;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .alert {
+        margin-top: 20px;
     }
 </style>
 @stop

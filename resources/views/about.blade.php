@@ -102,13 +102,7 @@
                                     </button>
                                 </form>
                             </li>
-                            <li>
-                                <div class="box-user">
-                                    <a href="/register" class="header-icon-right header-user">
-                                        <i class="fa-regular fa-user"></i>
-                                    </a>
-                                </div>
-                            </li>
+                         
                             <li>
                                 <div class="box-user">
                                     <a href="/logout" class="header-icon-right header-user">

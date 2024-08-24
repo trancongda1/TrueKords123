@@ -9,7 +9,7 @@ class UserContribution extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'description', 'content', 'approved'];
+    protected $fillable = ['user_id', 'title', 'description', 'content', 'youtube_link', 'approved'];
 
     // Quan hệ ngược lại với User
     public function user()

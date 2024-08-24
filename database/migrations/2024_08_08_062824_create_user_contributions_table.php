@@ -13,7 +13,8 @@
                 $table->foreignId('user_id')->constrained()->onDelete('cascade');
                 $table->string('title');
                 $table->text('description')->nullable();
-                $table->text('content'); // The song or chord content
+                $table->text('content');
+                $table->string('youtube_link')->nullable();
                 $table->boolean('approved')->default(false);
                 $table->timestamps();
             });

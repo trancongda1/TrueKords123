@@ -11,7 +11,8 @@ class ContributionController extends Controller
 {
     public function index(Request $request)
     {
-        $contributions = UserContribution::paginate(10);
+        // Sắp xếp các đóng góp chưa được phê duyệt lên trước
+        $contributions = UserContribution::orderBy('approved', 'asc')->paginate(10);
         $selectedContribution = null;
 
         if ($request->has('id')) {
@@ -20,9 +21,9 @@ class ContributionController extends Controller
 
         return view('admin.contribution', compact('contributions', 'selectedContribution'));
     }
- 
 
-    // Hiển thị danh sách các đóng góp của người dùng hiện tại
+
+    // Hiển thị danh sách các đóng góp hợp âm của người dùng hiện tại
     public function indexUser()
     {
         if (!Auth::check()) {
@@ -33,7 +34,7 @@ class ContributionController extends Controller
         return view('contribute', compact('contributions'));
     }
 
-    // Hiển thị form để tạo một đóng góp mới
+    // Hiển thị form để tạo một đóng góp mới về hợp âm
     public function create()
     {
         if (!Auth::check()) {
@@ -43,28 +44,53 @@ class ContributionController extends Controller
         return view('contribute');
     }
 
-    // Lưu đóng góp mới vào cơ sở dữ liệu
+    // Lưu đóng góp mới về hợp âm vào cơ sở dữ liệu
     public function store(Request $request)
     {
         if (!Auth::check()) {
-            return redirect('/register');  // Chuyển hướng đến trang đăng ký nếu chưa đăng nhập
+            return redirect('/register');
         }
-
+    
         $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'content' => 'required|string',
+            'youtube_link' => 'required|url', // Thêm validate cho link YouTube
         ]);
-
+    
         UserContribution::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
+            'youtube_link' => $request->youtube_link, // Lưu link YouTube vào cơ sở dữ liệu
             'approved' => $request->has('approval'),
         ]);
-
-        return redirect()->route('contributions.indexUser')->with('success', 'Đóng góp đã được tạo thành công.');
+    
+        return redirect()->route('contributions.indexUser')->with('success', 'Đóng góp của bạn đã được gửi thành công.');
     }
     
+
+
+    // Phê duyệt một góp ý về hợp âm
+    public function approve($id)
+    {
+        $contribution = UserContribution::findOrFail($id);
+        $contribution->approved = true;
+        $contribution->save();
+
+        return redirect()->route('admin.contributions.index')->with('success', 'Góp ý về hợp âm đã được phê duyệt.');
+    }
+
+    // Từ chối một góp ý về hợp âm
+    public function reject($id)
+    {
+        $contribution = UserContribution::findOrFail($id);
+        $contribution->approved = false;
+        $contribution->save();
+
+        return redirect()->route('admin.contributions.index')->with('error', 'Góp ý về hợp âm đã bị từ chối.');
+    }
 }

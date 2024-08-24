@@ -109,11 +109,31 @@
                                 </form>
                             </li>
                             <li>
+                                @if(Auth::check())
+                                <!-- Hiển thị thông báo khi người dùng đã đăng nhập -->
+                                <div class="box-user">
+                                    <a href="javascript:void(0);" class="header-icon-right header-user" onclick="openLoginModal(123)">
+                                        <i class="fa-regular fa-user"></i>
+                                    </a>
+                                </div>
+                                @else
+                                <!-- Hiển thị liên kết đăng ký khi người dùng chưa đăng nhập -->
                                 <div class="box-user">
                                     <a href="/register" class="header-icon-right header-user">
                                         <i class="fa-regular fa-user"></i>
                                     </a>
                                 </div>
+                                @endif
+
+                                <!-- Modal -->
+                               
+                                <div id="loginModal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close" onclick="closeLoginModal()">&times;</span>
+                                        <p>Bạn đã đăng nhập rồi! Hãy đăng xuất để thực hiện đăng ký mới.</p>
+                                    </div>
+                                </div>
+
                             </li>
                             <li>
                                 <div class="box-user">
@@ -149,7 +169,10 @@
                 </div>
 
                 @if($songs->isEmpty())
-                <p>Không tìm thấy bài hát nào.</p>
+                <div class="no-songs">
+                    <p>Không tìm thấy bài hát nào.</p>
+                </div>
+
                 @else
                 <ul>
                     @foreach($songs as $song)
@@ -179,10 +202,20 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-        Cufon.now();
+    <script>
+        function openLoginModal() {
+            console.log('Open modal function triggered');
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            console.log('Close modal function triggered');
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+
+        
     </script>
-    <!-- END PAGE SOURCE -->
 </body>
 
 </html>

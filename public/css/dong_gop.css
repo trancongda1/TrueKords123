@@ -430,3 +430,37 @@ nav ul li a.active::before {
         animation: fadeIn 1.2s ease-in-out;
     }
 }
+/* Styles for the YouTube Link input field */
+.youtube-link-group {
+    margin-bottom: 15px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.youtube-link-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #ddd;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.youtube-link-group input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.youtube-link-group input[type="url"]:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    outline: none;
+}
+
+.youtube-link-group input[type="url"]::placeholder {
+    color: #bbb;
+    font-style: italic;
+}

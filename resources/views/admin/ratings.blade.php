@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'User Ratings Management')
+@section('title', 'Song Ratings Management')
 
 @section('content_header')
-<h1>User Ratings Management</h1>
+<h1>Song Ratings Management</h1>
 @stop
 
 @section('content')
@@ -15,8 +15,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>User</th>
                         <th>Song</th>
+                        <th>User</th>
                         <th>Rating</th>
                         <th>Actions</th>
                     </tr>
@@ -24,9 +24,9 @@
                 <tbody>
                     @forelse ($ratings as $rating)
                     <tr>
-                        <td>{{ $rating->id }}</td>
-                        <td>{{ $rating->user ? $rating->user->name : 'N/A' }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $rating->song ? $rating->song->title : 'N/A' }}</td>
+                        <td>{{ $rating->user ? $rating->user->name : 'N/A' }}</td>
                         <td>{{ $rating->rating }}</td>
                         <td>
                             <a href="{{ route('admin.ratings.index', ['id' => $rating->id]) }}" class="btn btn-info">View</a>
@@ -37,7 +37,6 @@
                         <td colspan="5" class="text-center">No ratings found.</td>
                     </tr>
                     @endforelse
-
                 </tbody>
             </table>
 
@@ -52,7 +51,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3>Rating Details</h3>
+                    <h3>Rating Details for {{ $selectedRating->song ? $selectedRating->song->title : 'N/A' }}</h3>
                 </div>
                 <div class="card-body">
                     <p><strong>User:</strong> {{ $selectedRating->user ? $selectedRating->user->name : 'N/A' }}</p>
@@ -60,10 +59,12 @@
                     <p><strong>Rating:</strong> {{ $selectedRating->rating }}</p>
                     <p><strong>Rated At:</strong> {{ $selectedRating->created_at }}</p>
                 </div>
+                <div class="card-footer">
+                    <a href="{{ route('admin.ratings.index') }}" class="btn btn-secondary">Back to List</a>
+                </div>
             </div>
         </div>
         @endif
-
     </div>
 </div>
 @stop

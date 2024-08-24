@@ -246,13 +246,6 @@
                             </li>
                             <li>
                                 <div class="box-user">
-                                    <a href="/register" class="header-icon-right header-user">
-                                        <i class="fa-regular fa-user"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="box-user">
                                     <a href="/logout" class="header-icon-right header-user">
                                         <i class="fa-solid fa-sign-out"></i>
                                     </a>
@@ -317,6 +310,13 @@
                         <textarea id="content" name="content" rows="6" required></textarea>
                     </div>
 
+                    <!-- Thêm phần nhập liên kết YouTube -->
+                    <div class="form-group youtube-link-group">
+                        <label for="youtube_link">Liên Kết YouTube:</label>
+                        <input type="url" id="youtube_link" name="youtube_link" placeholder="https://www.youtube.com/watch?v=example" required>
+                    </div>
+
+
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="approval" name="approval">
                         <label for="approval">Bạn có muốn nội dung của bạn được phê duyệt?</label>
@@ -324,6 +324,7 @@
 
                     <button type="submit" class="submit-button">Gửi Đóng Góp</button>
                 </form>
+
             </section>
             <div class="clear"></div>
         </div>
