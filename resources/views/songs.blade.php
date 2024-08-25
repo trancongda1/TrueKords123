@@ -15,72 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="css/song.css">
-    <style>
-        /* Custom styles specific to this page */
-        .songs-list {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 8px;
-            color: white;
-        }
-
-        .search-results-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .search-results-subtitle {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .songs-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .songs-list ul li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #444;
-        }
-
-        .songs-list ul li span a {
-            color: #ff9;
-            text-decoration: none;
-        }
-
-        .songs-list ul li span a:hover {
-            text-decoration: underline;
-        }
-
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .pagination .page-link {
-            color: #ff9;
-            background-color: #444;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin: 0 5px;
-        }
-
-        .pagination .page-link:hover {
-            background-color: #555;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: #ff9;
-            color: #333;
-        }
-    </style>
+  
 </head>
 
 <body id="page1">
@@ -212,9 +147,7 @@
             console.log('Close modal function triggered');
             document.getElementById('loginModal').style.display = 'none';
         }
-
-
-        
+ 
     </script>
 </body>
 

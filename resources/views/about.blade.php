@@ -82,7 +82,7 @@
 <body id="page1">
     <!-- BẮT ĐẦU NGUỒN TRANG -->
     <div class="wrap">
-        <header>
+    <header>
             <div class="container">
                 <div class="header-top">
                     <div class="logo-top">
@@ -90,19 +90,20 @@
                             <img src="{{ asset('images/gitar.jpg') }}" alt="">
                         </div>
                     </div>
+
                     <div class="header-top-right">
                         <ul>
                             <li>
-                                <form action="{{ route('user.songs.search') }}" method="GET">
+                                <form action="{{ route('playlists.search') }}" method="GET">
                                     <div class="header-input">
-                                        <input type="text" class="inp-header-search" name="textSearch" placeholder="Tìm kiếm.." id="header-search" value="{{ request('textSearch') }}">
+                                        <input type="text" class="inp-header-search" name="search" placeholder="Tìm kiếm Playlist..." id="header-search" value="{{ request('search') }}">
                                     </div>
                                     <button type="submit" class="header-icon-right header-search">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
                                 </form>
                             </li>
-                         
+                           
                             <li>
                                 <div class="box-user">
                                     <a href="/logout" class="header-icon-right header-user">
@@ -113,17 +114,19 @@
                         </ul>
                     </div>
                 </div>
+
                 <h1><a href="#">Music Beats</a></h1>
                 <nav>
                     <ul>
                         <li class="m1"><a href="/"><span>Bài Hát</span></a></li>
                         <li class="m2"><a href="/playlists"><span>Danh Sách Phát</span></a></li>
-                        <li class="m3"><a href="/contribute"><span>Đóng Góp</span></a></li>
+                        <li class="m3"><a href="/contribute" ><span>Đóng Góp</span></a></li>
                         <li class="m4"><a href="/about" class="active"><span>Về Chúng Tôi</span></a></li>
                     </ul>
                 </nav>
             </div>
         </header>
+
 
         <div class="container">
             <section class="content-section">
