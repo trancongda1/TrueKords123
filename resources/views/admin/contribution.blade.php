@@ -53,10 +53,12 @@
                                     @csrf
                                     <button type="submit" class="btn btn-success">Approve</button>
                                 </form>
-                                <form action="{{ route('admin.contributions.reject', $contribution->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('admin.contributions.destroy', $contribution->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this contribution?');">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
+
                             </div>
                         </td>
                     </tr>

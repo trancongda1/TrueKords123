@@ -12,7 +12,10 @@ class RatingController extends Controller
     public function index(Request $request)
     {
         // Fetch all ratings with related songs and users
-        $ratings = Rating::with(['song', 'user'])->paginate(10);
+        $ratings = Rating::select('song_id', \DB::raw('AVG(rating) as average_rating'))
+            ->groupBy('song_id')
+            ->with(['song'])
+            ->paginate(10);
     
         $selectedRating = null;
         if ($request->has('id')) {
@@ -21,6 +24,7 @@ class RatingController extends Controller
     
         return view('admin.ratings', compact('ratings', 'selectedRating'));
     }
+    
     
 
     public function store(Request $request)

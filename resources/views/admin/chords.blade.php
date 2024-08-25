@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Song Name</th>
                 <th>Content</th>
                 <th>Image</th>
                 <th>Actions</th>
@@ -23,7 +23,7 @@
             @forelse ($chords as $chord)
             <tr>
                 <td>{{ $chord->id }}</td>
-                <td>{{ $chord->name }}</td>
+                <td>{{ optional($chord->song)->title }}</td>
                 <td>{{ $chord->content }}</td>
                 <td>
                     @if ($chord->img)
@@ -53,8 +53,15 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $chord->name }}" required>
+                                    <label for="song_id">Select Song</label>
+                                    <select name="song_id" class="form-control" required>
+                                        <option value="" disabled>Select a song</option>
+                                        @foreach ($songs as $song)
+                                            <option value="{{ $song->id }}" {{ $chord->song_id == $song->id ? 'selected' : '' }}>
+                                                {{ $song->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>
@@ -132,8 +139,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <label for="song_id">Select Song</label>
+                        <select name="song_id" class="form-control" required>
+                            <option value="" disabled selected>Select a song</option>
+                            @foreach ($songs as $song)
+                                <option value="{{ $song->id }}">{{ $song->title }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="content">Content</label>

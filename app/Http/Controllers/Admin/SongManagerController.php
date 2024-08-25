@@ -8,41 +8,59 @@ use Illuminate\Http\Request;
 
 class SongManagerController extends Controller
 {
-    // Hiển thị danh sách bài hát với phân trang
-    public function index()
+    public function index(Request $request)
     {
-        $songs = Song::paginate(5);
+        $query = Song::query();
+    
+        // Kiểm tra xem có yêu cầu sắp xếp theo `created_at` trước không
+        if ($request->has('sort_created_at')) {
+            $sortCreatedAt = $request->input('sort_created_at', 'desc');
+            $query->orderBy('created_at', $sortCreatedAt);
+        }
+    
+        // Sắp xếp theo title (A → Z hoặc Z → A) nếu có yêu cầu, hoặc mặc định theo title
+        if ($request->has('sort_title')) {
+            $sortTitle = $request->input('sort_title', 'asc');
+            $query->orderBy('title', $sortTitle);
+        } else {
+            $query->orderBy('title', 'asc');
+        }
+    
+        // Thực hiện phân trang và lấy kết quả
+        $songs = $query->paginate(10);
+    
         return view('admin.song_manager', compact('songs'));
     }
+    
 
     // Hiển thị danh sách bài hát cho người dùng
     public function userIndex()
     {
-        $songs = Song::all(); 
+        $songs = Song::all();
         return view('songs', compact('songs'));
     }
 
-     // Hiển thị danh sách bài hát cho người dùng và tìm kiếm
-     public function searchIndex(Request $request)
-     {
-         // Kiểm tra nếu có từ khóa tìm kiếm
-         $query = Song::query();
-         if ($request->has('textSearch')) {
-             $query->where('title', 'like', '%' . $request->input('textSearch') . '%');
-         }
-         
-         // Lấy tất cả bài hát hoặc theo từ khóa tìm kiếm
-         $songs = $query->paginate(10);
-         return view('songs', compact('songs'));
-     }
-     
-     // hiển thị hợp âm bài hát
-     public function showChords($id)
-     {
-         $song = Song::findOrFail($id);
-         $chords = $song->chords; // Lấy danh sách các hợp âm của bài hát
-         return view('chords', compact('song', 'chords'));
-     }
+    // Hiển thị danh sách bài hát cho người dùng và tìm kiếm
+    public function searchIndex(Request $request)
+    {
+        // Kiểm tra nếu có từ khóa tìm kiếm
+        $query = Song::query();
+        if ($request->has('textSearch')) {
+            $query->where('title', 'like', '%' . $request->input('textSearch') . '%');
+        }
+
+        // Lấy tất cả bài hát hoặc theo từ khóa tìm kiếm
+        $songs = $query->paginate(10);
+        return view('songs', compact('songs'));
+    }
+
+    // hiển thị hợp âm bài hát
+    public function showChords($id)
+    {
+        $song = Song::findOrFail($id);
+        $chords = $song->chords; // Lấy danh sách các hợp âm của bài hát
+        return view('chords', compact('song', 'chords'));
+    }
 
     // Hiển thị form tạo bài hát mới
     public function create()

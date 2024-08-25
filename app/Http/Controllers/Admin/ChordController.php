@@ -11,8 +11,9 @@ class ChordController extends Controller
 {
     public function index()
     {
-        $chords = Chord::paginate(3);
-        return view('admin.chords', compact('chords'));
+        $chords = Chord::with('song')->paginate(10);
+        $songs = Song::all(); // Lấy tất cả các bài hát để truyền vào view
+        return view('admin.chords', compact('chords', 'songs'));
     }
 
     public function create()
@@ -24,19 +25,16 @@ class ChordController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'song_id' => 'required|exists:songs,id',
             'content' => 'required',
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'song_id' => 'nullable|exists:songs,id', // Kiểm tra song_id nếu cần
         ]);
 
         $chord = new Chord();
-        $chord->name = $request->name;
+        $chord->song_id = $request->song_id;
         $chord->content = $request->content;
-        $chord->song_id = $request->input('song_id'); // Cung cấp giá trị song_id nếu có
 
         if ($request->hasFile('img')) {
-            // Lưu ảnh vào thư mục public/images
             $imageName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $imageName);
             $chord->img = 'images/' . $imageName;
@@ -50,30 +48,25 @@ class ChordController extends Controller
     public function edit($id)
     {
         $chord = Chord::findOrFail($id);
-        $songs = Song::all(); // Lấy danh sách các bài hát
+        $songs = Song::all(); // Lấy danh sách các bài hát để truyền vào view
         return view('admin.chords.edit', compact('chord', 'songs'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Chord $chord)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'song_id' => 'required|exists:songs,id',
             'content' => 'required',
             'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'song_id' => 'nullable|exists:songs,id', // Kiểm tra song_id nếu cần
         ]);
 
-        $chord = Chord::findOrFail($id);
-        $chord->name = $request->name;
+        $chord->song_id = $request->song_id;
         $chord->content = $request->content;
-        $chord->song_id = $request->input('song_id'); // Cung cấp giá trị song_id nếu có
 
         if ($request->hasFile('img')) {
-            // Xóa hình ảnh cũ nếu có
             if ($chord->img && file_exists(public_path($chord->img))) {
                 unlink(public_path($chord->img));
             }
-            // Lưu ảnh mới vào thư mục public/images
             $imageName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $imageName);
             $chord->img = 'images/' . $imageName;
@@ -84,9 +77,8 @@ class ChordController extends Controller
         return redirect()->route('admin.chords.index')->with('success', 'Chord updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Chord $chord)
     {
-        $chord = Chord::findOrFail($id);
         if ($chord->img && file_exists(public_path($chord->img))) {
             unlink(public_path($chord->img));
         }

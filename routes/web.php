@@ -51,11 +51,11 @@ Route::middleware([AdminMiddleware::class])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
+        Route::resource('contributions', ContributionController::class);
         Route::resource('users', UserController::class);
         Route::resource('songs', SongManagerController::class);
         Route::resource('chords', ChordController::class);
         Route::resource('playlist', PlaylistController::class);
-        Route::resource('contributions', ContributionController::class);
         Route::get('like', [LikeController::class, 'index'])->name('likes.index');
         Route::get('ratings', [RatingController::class, 'index'])->name('ratings.index');
 

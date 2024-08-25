@@ -50,7 +50,7 @@ class ContributionController extends Controller
         if (!Auth::check()) {
             return redirect('/register');
         }
-    
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -59,7 +59,7 @@ class ContributionController extends Controller
             'content' => 'required|string',
             'youtube_link' => 'required|url', // Thêm validate cho link YouTube
         ]);
-    
+
         UserContribution::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
@@ -68,10 +68,10 @@ class ContributionController extends Controller
             'youtube_link' => $request->youtube_link, // Lưu link YouTube vào cơ sở dữ liệu
             'approved' => $request->has('approval'),
         ]);
-    
+
         return redirect()->route('contributions.indexUser')->with('success', 'Đóng góp của bạn đã được gửi thành công.');
     }
-    
+
 
 
     // Phê duyệt một góp ý về hợp âm
@@ -84,13 +84,11 @@ class ContributionController extends Controller
         return redirect()->route('admin.contributions.index')->with('success', 'Góp ý về hợp âm đã được phê duyệt.');
     }
 
-    // Từ chối một góp ý về hợp âm
-    public function reject($id)
+    public function destroy($id)
     {
         $contribution = UserContribution::findOrFail($id);
-        $contribution->approved = false;
-        $contribution->save();
+        $contribution->delete();
 
-        return redirect()->route('admin.contributions.index')->with('error', 'Góp ý về hợp âm đã bị từ chối.');
+        return redirect()->route('admin.contributions.index')->with('success', 'Góp ý về hợp âm đã bị xóa.');
     }
 }

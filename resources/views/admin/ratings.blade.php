@@ -16,8 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th>Song</th>
-                        <th>User</th>
-                        <th>Rating</th>
+                        <th>Average Rating</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -26,15 +25,14 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $rating->song ? $rating->song->title : 'N/A' }}</td>
-                        <td>{{ $rating->user ? $rating->user->name : 'N/A' }}</td>
-                        <td>{{ $rating->rating }}</td>
+                        <td>{{ number_format($rating->average_rating, 2) }}</td>
                         <td>
-                            <a href="{{ route('admin.ratings.index', ['id' => $rating->id]) }}" class="btn btn-info">View</a>
+                            <a href="{{ route('admin.ratings.index', ['id' => $rating->song_id]) }}" class="btn btn-info">View</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="text-center">No ratings found.</td>
+                        <td colspan="4" class="text-center">No ratings found.</td>
                     </tr>
                     @endforelse
                 </tbody>
