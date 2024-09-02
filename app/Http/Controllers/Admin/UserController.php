@@ -107,7 +107,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if ($user->role == 1) {
+            return redirect()->route('admin.users.index')->with('error', 'Không thể xoá tài khoản admin.');
+        }
+    
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'Bạn đã xoá tài khoản thành công');
     }
+    
 }

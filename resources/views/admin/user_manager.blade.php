@@ -3,10 +3,21 @@
 @section('title', 'User Management')
 
 @section('content_header')
-    <h1>User Management</h1>
+<h1>User Management</h1>
 @stop
 
 @section('content')
+<div class="container">
+    <!-- Hiển thị thông báo -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 <div class="container">
     <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#createUserModal">Add New User</button>
     <table class="table">
@@ -46,11 +57,12 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" readonly>
                                 </div>
+                                <!-- Email field is not editable -->
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
+                                    <input type="email" name="email" class="form-control" value="{{ $user->email }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password (leave blank to keep current)</label>
