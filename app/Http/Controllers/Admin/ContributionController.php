@@ -50,7 +50,7 @@ class ContributionController extends Controller
         if (!Auth::check()) {
             return redirect('/register');
         }
-
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -59,7 +59,7 @@ class ContributionController extends Controller
             'content' => 'required|string',
             'youtube_link' => 'required|url', // Thêm validate cho link YouTube
         ]);
-
+        
         UserContribution::create([
             'user_id' => auth()->id(),
             'title' => $request->title,

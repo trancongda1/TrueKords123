@@ -27,7 +27,7 @@ class PlaylistController extends Controller
         $playlist = Playlist::create(['name' => $request->name]);
         $playlist->songs()->attach($request->songs);
 
-        return redirect()->route('admin.playlists.index')->with('success', 'Playlist created successfully.');
+        return redirect()->route('admin.playlist.index')->with('success', 'Playlist created successfully.');
     }
 
     public function update(Request $request, Playlist $playlist)

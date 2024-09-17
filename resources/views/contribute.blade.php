@@ -48,7 +48,7 @@
                                     </button>
                                 </form>
                             </li>
-                           
+
                             <li>
                                 <div class="box-user">
                                     <a href="/logout" class="header-icon-right header-user">
@@ -112,6 +112,10 @@
                         <label for="content">Nội Dung (Bài hát hoặc hợp âm):</label>
                         <textarea id="content" name="content" rows="6" required></textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="youtube_link">Link YouTube:</label>
+                        <input type="url" id="youtube_link" name="youtube_link" required>
+                    </div>
 
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="approval" name="approval">
@@ -145,7 +149,6 @@
             console.log('Close modal function triggered');
             document.getElementById('loginModal').style.display = 'none';
         }
- 
     </script>
 
 </body>
